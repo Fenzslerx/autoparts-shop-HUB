@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react"
 import { useRouter } from "next/navigation"
-import MultiImageUpload from '@/components/MultiImageUpload'
+
 
 export const runtime = 'edge'
 export const dynamic = 'force-dynamic'

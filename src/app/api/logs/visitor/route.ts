@@ -1,4 +1,7 @@
-// export const runtime = 'edge'
+import { NextRequest, NextResponse } from 'next/server'
+import { logVisitor } from '@/lib/logger'
+
+export const runtime = 'edge'
 
 export async function POST(request: NextRequest) {
     try {
@@ -18,5 +21,3 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: 'Failed to log' }, { status: 500 })
     }
 }
-
-export const runtime = 'edge'

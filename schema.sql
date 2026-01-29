@@ -1,4 +1,3 @@
--- Products table
 CREATE TABLE IF NOT EXISTS products (
   id TEXT PRIMARY KEY,
   name TEXT NOT NULL,
@@ -11,10 +10,16 @@ CREATE TABLE IF NOT EXISTS products (
   image_url TEXT,
   stock INTEGER DEFAULT 0,
   is_active INTEGER DEFAULT 1,
-  created_at TEXT DEFAULT CURRENT_TIMESTAMP,
-  updated_at TEXT DEFAULT CURRENT_TIMESTAMP
+  created_at TEXT DEFAULT (datetime('now')),
+  updated_at TEXT DEFAULT (datetime('now'))
 );
 
--- Create index for faster queries
-CREATE INDEX IF NOT EXISTS idx_products_category ON products(category);
-CREATE INDEX IF NOT EXISTS idx_products_brand ON products(car_brand);
+CREATE TABLE IF NOT EXISTS logs (
+  id TEXT PRIMARY KEY,
+  type TEXT NOT NULL,
+  action TEXT NOT NULL,
+  data TEXT,
+  ip TEXT,
+  user_agent TEXT,
+  created_at TEXT DEFAULT (datetime('now'))
+);

@@ -118,3 +118,5 @@ export default async function AdminProductsPage() {
         </div>
     )
 }
+
+export const runtime = 'edge'

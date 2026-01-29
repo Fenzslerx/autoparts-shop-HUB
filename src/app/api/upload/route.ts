@@ -28,3 +28,5 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: 'Upload failed: ' + String(error) }, { status: 500 })
     }
 }
+
+export const runtime = 'edge'

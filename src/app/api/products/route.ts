@@ -3,6 +3,8 @@ import { getProducts, addProduct } from '@/lib/db'
 import { logProductAction } from '@/lib/logger'
 import { cookies } from 'next/headers'
 
+export const runtime = 'edge'
+
 // GET all products
 export async function GET() {
     const products = await getProducts()
@@ -45,3 +47,5 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: 'Failed to create product' }, { status: 500 })
     }
 }
+
+export const runtime = 'edge'

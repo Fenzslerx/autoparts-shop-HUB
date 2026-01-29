@@ -3,6 +3,8 @@ import { getProductById, updateProduct, deleteProduct } from '@/lib/db'
 import { logProductAction } from '@/lib/logger'
 import { cookies } from 'next/headers'
 
+export const runtime = 'edge'
+
 // Check auth helper
 async function checkAuth() {
     const cookieStore = await cookies()

@@ -2,6 +2,8 @@ import { NextRequest, NextResponse } from 'next/server'
 import { getLogs, getLogStats, LogType } from '@/lib/logger'
 import { cookies } from 'next/headers'
 
+export const runtime = 'edge'
+
 async function checkAuth() {
     const cookieStore = await cookies()
     const authCookie = cookieStore.get('admin_auth')
@@ -34,3 +36,5 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ logs })
 }
+
+export const runtime = 'edge'

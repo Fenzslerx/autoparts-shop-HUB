@@ -2,6 +2,8 @@ import { cookies } from 'next/headers'
 import { NextResponse } from 'next/server'
 import { logAuth } from '@/lib/logger'
 
+export const runtime = 'edge'
+
 export async function POST() {
     const cookieStore = await cookies()
     cookieStore.delete('admin_auth')
@@ -11,3 +13,5 @@ export async function POST() {
 
     return NextResponse.json({ success: true })
 }
+
+export const runtime = 'edge'

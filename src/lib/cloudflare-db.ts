@@ -2,26 +2,43 @@ import { Product } from './types'
 
 const D1_API_URL = `https://api.cloudflare.com/client/v4/accounts/${process.env.R2_ACCOUNT_ID}/d1/database/${process.env.D1_DATABASE_ID}/query`
 
+import { getRequestContext } from '@cloudflare/next-on-pages'
+
 async function executeD1Query(sql: string, params: any[] = []) {
-    // Use wrangler for local dev, will switch to API for production
-    const { exec } = await import('child_process')
-    const { promisify } = await import('util')
-    const execAsync = promisify(exec)
-
-    const escapedSql = sql.replace(/"/g, '\\"')
-    const paramsJson = JSON.stringify(params)
-
+    // 1. Try to use D1 Binding (Production / Pages Dev)
     try {
-        const { stdout } = await execAsync(
-            `npx wrangler d1 execute mavarix-db --remote --json --command="${escapedSql}"`,
-            { cwd: process.cwd() }
-        )
-        const result = JSON.parse(stdout)
-        return result[0]?.results || []
-    } catch (error) {
-        console.error('D1 Query Error:', error)
-        return []
+        const db = getRequestContext().env.DB
+        if (db) {
+            const stmt = db.prepare(sql).bind(...params)
+            const result = await stmt.all()
+            return result.results || []
+        }
+    } catch (e) {
+        // Fallthrough if not running in Pages environment
     }
+
+    // 2. Local Dev Fallback (using wrangler CLI)
+    if (process.env.NODE_ENV === 'development') {
+        const { exec } = await import('child_process')
+        const { promisify } = await import('util')
+        const execAsync = promisify(exec)
+
+        const escapedSql = sql.replace(/"/g, '\\"')
+
+        try {
+            const { stdout } = await execAsync(
+                `npx wrangler d1 execute mavarix-db --remote --json --command="${escapedSql}"`,
+                { cwd: process.cwd() }
+            )
+            const result = JSON.parse(stdout)
+            return result[0]?.results || []
+        } catch (error) {
+            console.error('D1 Query Error:', error)
+            return []
+        }
+    }
+
+    return []
 }
 
 // Get all products

@@ -2,6 +2,8 @@ import { cookies } from 'next/headers'
 import { NextResponse } from 'next/server'
 import { logAuth } from '@/lib/logger'
 
+export const runtime = 'edge'
+
 export async function POST(request: Request) {
     const { username, password } = await request.json()
 
@@ -31,3 +33,5 @@ export async function POST(request: Request) {
         { status: 401 }
     )
 }
+
+export const runtime = 'edge'

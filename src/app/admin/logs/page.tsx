@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 
+export const runtime = 'edge'
+
 export default function LogsDashboard() {
     const router = useRouter()
     const [activeTab, setActiveTab] = useState('all')
@@ -20,8 +22,8 @@ export default function LogsDashboard() {
                         key={tab}
                         onClick={() => setActiveTab(tab)}
                         className={`px-4 py-2 rounded-xl whitespace-nowrap transition-colors ${activeTab === tab
-                                ? 'bg-[var(--primary)] text-white font-medium'
-                                : 'bg-white text-[var(--text-secondary)] hover:bg-gray-50 border border-[var(--border)]'
+                            ? 'bg-[var(--primary)] text-white font-medium'
+                            : 'bg-white text-[var(--text-secondary)] hover:bg-gray-50 border border-[var(--border)]'
                             }`}
                     >
                         {tab === 'all' && 'ทั้งหมด'}
@@ -129,3 +131,5 @@ function LogTable({ type }: { type?: string }) {
         </div>
     )
 }
+
+export const runtime = 'edge'

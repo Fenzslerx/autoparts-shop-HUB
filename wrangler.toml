@@ -1,0 +1,13 @@
+name = "mavarix-app"
+compatibility_date = "2024-01-29"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".vercel/output/static"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "mavarix-db"
+database_id = "3255f45e-446a-499a-800b-9d03a53a7cda"
+
+[[r2_buckets]]
+binding = "R2"
+bucket_name = "mavarix-images"

@@ -399,3 +399,5 @@ export default function NewProductPage() {
         </div>
     )
 }
+
+export const runtime = 'edge'

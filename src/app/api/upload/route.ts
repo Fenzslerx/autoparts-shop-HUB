@@ -1,5 +1,3 @@
-import { r2 } from '@/lib/r2'
-import { PutObjectCommand } from '@aws-sdk/client-s3'
 import { NextRequest, NextResponse } from 'next/server'
 import { uploadToR2 } from '@/lib/r2'
 

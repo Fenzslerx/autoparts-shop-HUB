@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server'
 import { logAuth } from '@/lib/logger'
 
 export const runtime = 'edge'
+export const dynamic = 'force-dynamic'
 
 export async function POST(request: Request) {
     const cookieStore = await cookies()

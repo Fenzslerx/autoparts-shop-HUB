@@ -1,0 +1,14 @@
+{
+  "logs": [
+    {
+      "id": "log-1769717742520",
+      "type": "auth",
+      "action": "login",
+      "timestamp": "2026-01-29T20:15:42.520Z",
+      "data": {
+        "username": "admin"
+      },
+      "ip": "::ffff:192.168.1.4"
+    }
+  ]
+}

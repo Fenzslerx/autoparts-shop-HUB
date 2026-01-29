@@ -1,0 +1,43 @@
+{
+  "products": [
+    {
+      "name": "see",
+      "description": "หกฟหกหฟก",
+      "price": 23,
+      "carBrand": "Honda",
+      "carModel": "HR-V",
+      "carYear": "2033",
+      "category": "body",
+      "imageUrl": "https://pub-7317646fe751438aab922bda666d9eaf.r2.dev/products/1769715892481.png",
+      "images": [
+        "https://pub-7317646fe751438aab922bda666d9eaf.r2.dev/products/1769715892481.png",
+        "https://pub-7317646fe751438aab922bda666d9eaf.r2.dev/products/1769715893021.png",
+        "https://pub-7317646fe751438aab922bda666d9eaf.r2.dev/products/1769715893834.png",
+        "https://pub-7317646fe751438aab922bda666d9eaf.r2.dev/products/1769715895008.png"
+      ],
+      "stock": 2,
+      "id": "prod-1769715907044",
+      "createdAt": "2026-01-29",
+      "updatedAt": "2026-01-29"
+    },
+    {
+      "name": "sadsa",
+      "description": "sadsad",
+      "price": 222333,
+      "carBrand": "Toyota",
+      "carModel": "Camry",
+      "carYear": "2222",
+      "category": "engine",
+      "imageUrl": "https://pub-7317646fe751438aab922bda666d9eaf.r2.dev/products/1769716442972.png",
+      "images": [
+        "https://pub-7317646fe751438aab922bda666d9eaf.r2.dev/products/1769716442972.png",
+        "https://pub-7317646fe751438aab922bda666d9eaf.r2.dev/products/1769716444979.png"
+      ],
+      "stock": 2,
+      "isActive": true,
+      "id": "prod-1769716459879",
+      "createdAt": "2026-01-29",
+      "updatedAt": "2026-01-29"
+    }
+  ]
+}

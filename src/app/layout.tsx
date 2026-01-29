@@ -10,6 +10,8 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
+export const runtime = 'edge'
+
 export const metadata: Metadata = {
   title: "MAVARIX - ศูนย์รวมอะไหล่รถยนต์คุณภาพ",
   description: "ศูนย์รวมอะไหล่รถยนต์คุณภาพสูง ราคาย่อมเยา ครบทุกยี่ห้อ Toyota, Honda, Mazda, Isuzu และอื่นๆ พร้อมบริการจัดส่งทั่วประเทศ",

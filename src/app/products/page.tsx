@@ -7,7 +7,7 @@ import { categories, carBrands, getCategoryById } from '@/lib/data';
 import { Product } from '@/lib/types';
 
 export const dynamic = 'force-dynamic'
-export const runtime = 'edge'
+// export const runtime = 'edge'
 
 interface ProductsPageProps {
     searchParams: Promise<{

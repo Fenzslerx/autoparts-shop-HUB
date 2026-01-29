@@ -1,5 +1,9 @@
+import { r2 } from '@/lib/r2'
+import { PutObjectCommand } from '@aws-sdk/client-s3'
 import { NextRequest, NextResponse } from 'next/server'
 import { uploadToR2 } from '@/lib/r2'
+
+export const runtime = 'edge'
 
 export async function POST(request: NextRequest) {
     try {
@@ -28,5 +32,3 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: 'Upload failed: ' + String(error) }, { status: 500 })
     }
 }
-
-export const runtime = 'edge'

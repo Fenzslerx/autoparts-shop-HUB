@@ -1,51 +1,33 @@
-import { NextRequest, NextResponse } from 'next/server'
-import { getProducts, addProduct } from '@/lib/db'
-import { logProductAction } from '@/lib/logger'
 import { cookies } from 'next/headers'
+import { getProductsFromD1, addProductToD1 } from '@/lib/cloudflare-db'
+import { logProductAction } from '@/lib/logger'
 
 export const runtime = 'edge'
 
 // GET all products
 export async function GET() {
-    const products = await getProducts()
-    return NextResponse.json({ products })
+    const products = await getProductsFromD1()
+    return Response.json(products)
 }
 
-// POST new product (requires auth)
-export async function POST(request: NextRequest) {
-    // Check auth
+// POST create product
+export async function POST(request: Request) {
     const cookieStore = await cookies()
     const authCookie = cookieStore.get('admin_auth')
 
-    if (authCookie?.value !== 'authenticated') {
-        return NextResponse.json({ error: 'Unauthorized' }, { status: 401 })
+    if (!authCookie || authCookie.value !== 'true') {
+        return Response.json({ error: 'Unauthorized' }, { status: 401 })
     }
 
     try {
         const body = await request.json()
-
-        const product = await addProduct({
-            name: body.name,
-            description: body.description || '',
-            price: Number(body.price),
-            carBrand: body.carBrand,
-            carModel: body.carModel,
-            carYear: body.carYear || '',
-            category: body.category,
-            imageUrl: body.imageUrl || '',
-            images: body.images || [],
-            stock: Number(body.stock) || 0,
-            isActive: true,
-        })
+        const newProduct = await addProductToD1(body)
 
         // Log creation
-        await logProductAction('create', { id: product.id, name: product.name })
+        await logProductAction('create', { id: newProduct.id, name: newProduct.name })
 
-        return NextResponse.json({ success: true, product })
+        return Response.json(newProduct)
     } catch (error) {
-        console.error('Error creating product:', error)
-        return NextResponse.json({ error: 'Failed to create product' }, { status: 500 })
+        return Response.json({ error: 'Failed to create product' }, { status: 500 })
     }
 }
-
-export const runtime = 'edge'

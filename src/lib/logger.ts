@@ -27,10 +27,14 @@ export async function addLog(
     const now = new Date().toISOString()
 
     // Use D1 directly
-    await executeD1Query(`
-    INSERT INTO logs (id, type, action, data, ip, user_agent, created_at)
-    VALUES ('${id}', '${type}', '${action}', '${JSON.stringify(data).replace(/'/g, "''")}', '${request?.ip || ''}', '${request?.userAgent || ''}', '${now}')
-  `)
+    try {
+        await executeD1Query(`
+        INSERT INTO logs (id, type, action, data, ip, user_agent, created_at)
+        VALUES ('${id}', '${type}', '${action}', '${JSON.stringify(data).replace(/'/g, "''")}', '${request?.ip || ''}', '${request?.userAgent || ''}', '${now}')
+    `)
+    } catch (e) {
+        console.error("Failed to write log", e);
+    }
 
     return {
         id,
@@ -86,7 +90,6 @@ export async function getLogs(options?: {
     }
 }
 
-// Helper functions
 export async function logProductAction(
     action: 'create' | 'update' | 'delete',
     productData: { id?: string; name?: string;[key: string]: any }
@@ -114,7 +117,6 @@ export async function logContact(
     return addLog('contact', 'inquiry', { productId, productName }, request)
 }
 
-// Get log stats
 export async function getLogStats() {
     try {
         const totalLogsQuery = await executeD1Query('SELECT COUNT(*) as count FROM logs')
@@ -126,7 +128,7 @@ export async function getLogStats() {
         return {
             totalLogs,
             todayLogs: todayLogsQuery[0]?.count || 0,
-            productActions: 0, // Simplified for performance
+            productActions: 0,
             authActions: 0,
             pageViews: 0,
             inquiries: 0,

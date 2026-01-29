@@ -29,7 +29,7 @@ export async function getProducts(): Promise<Product[]> {
 
 export async function getProductById(id: string): Promise<Product | null> {
     try {
-        const result = await executeD1Query(`SELECT * FROM products WHERE id = '${id}'`)
+        const result = await executeD1Query('SELECT * FROM products WHERE id = ?', [id])
         if (result && result.length > 0) {
             const p = result[0]
             return {
@@ -76,7 +76,7 @@ export async function updateProduct(id: string, updates: Partial<Product>): Prom
 }
 
 export async function deleteProduct(id: string): Promise<boolean> {
-    await executeD1Query(`DELETE FROM products WHERE id = '${id}'`)
+    await executeD1Query('DELETE FROM products WHERE id = ?', [id])
     return true
 }
 

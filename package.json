@@ -8,26 +8,27 @@
     "start": "next start",
     "lint": "eslint",
     "pages:build": "node scripts/build-worker.js",
-    "pages:deploy": "npm run pages:build && wrangler pages deploy .vercel/output/static"
+    "pages:deploy": "npm run pages:build && wrangler pages deploy"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.978.0",
-    "next": "16.1.6",
+    "next": "14.2.18",
     "next-auth": "^5.0.0-beta.30",
-    "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   },
   "devDependencies": {
     "@cloudflare/next-on-pages": "^1.13.16",
     "@opennextjs/cloudflare": "^1.16.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
-    "@types/react": "^19",
-    "@types/react-dom": "^19",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
     "eslint": "^9",
-    "eslint-config-next": "16.1.6",
+    "eslint-config-next": "14.2.18",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "vercel": "^50.9.4"
+    "vercel": "^50.9.4",
+    "wrangler": "^4.61.1"
   }
 }

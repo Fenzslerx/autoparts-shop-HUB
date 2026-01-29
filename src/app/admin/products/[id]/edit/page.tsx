@@ -4,7 +4,6 @@ import { useState, useRef, useEffect } from "react"
 import { useRouter } from "next/navigation"
 
 
-export const runtime = 'edge'
 export const dynamic = 'force-dynamic'
 import { categories, carBrands } from "@/lib/data"
 

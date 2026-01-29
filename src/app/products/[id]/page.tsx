@@ -9,7 +9,6 @@ import { getProducts, getProductById } from '@/lib/db';
 import { getCategoryById, formatPrice } from '@/lib/data';
 
 export const dynamic = 'force-dynamic'
-export const runtime = 'edge'
 
 interface ProductDetailPageProps {
     params: Promise<{

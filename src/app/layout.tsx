@@ -10,7 +10,6 @@ const inter = Inter({
   variable: '--font-inter',
 });
 
-export const runtime = 'edge'
 
 export const metadata: Metadata = {
   title: "MAVARIX - ศูนย์รวมอะไหล่รถยนต์คุณภาพ",

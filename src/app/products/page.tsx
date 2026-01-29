@@ -146,5 +146,4 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
     );
 }
 
-export const runtime = 'edge'
 export const dynamic = 'force-dynamic'

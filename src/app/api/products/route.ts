@@ -2,7 +2,6 @@ import { cookies } from 'next/headers'
 import { getProductsFromD1, addProductToD1 } from '@/lib/cloudflare-db'
 import { logProductAction } from '@/lib/logger'
 
-export const runtime = 'edge'
 
 // GET all products
 export async function GET() {

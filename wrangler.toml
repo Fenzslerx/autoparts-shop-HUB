@@ -1,13 +1,12 @@
-name = "autoparts-hubx"
-compatibility_date = "2024-01-29"
+name = "mavarix-app"
+compatibility_date = "2024-01-01"
 compatibility_flags = ["nodejs_compat"]
-pages_build_output_dir = ".vercel/output/static"
 
 [[d1_databases]]
 binding = "DB"
 database_name = "mavarix-db"
-database_id = "d1b5a5b5-5b5b-4b5b-8b5b-5b5b5b5b5b5b"
+database_id = "3255f45e-446a-499a-800b-9d03a53a7cda"
 
 [[r2_buckets]]
-binding = "R2"
+binding = "R2_BUCKET"
 bucket_name = "mavarix-images"

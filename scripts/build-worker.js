@@ -8,54 +8,15 @@ const isWindows = process.platform === 'win32';
 const npx = isWindows ? 'npx.cmd' : 'npx';
 
 try {
-    // 1. Run Vercel Build
-    console.log(`⚡️ Running Vercel build using ${npx}...`);
-    execSync(`${npx} vercel build`, { stdio: 'inherit' });
+    // 1. Run Next.js Build directly
+    console.log('⚡️ Running Next.js build...');
+    execSync('npm run build', { stdio: 'inherit' });
 
-    console.log('✅ Vercel build completed.');
+    console.log('✅ Next.js build completed.');
 
-    // 2. Fix _global-error mismatch
-    const functionsDir = path.join('.vercel', 'output', 'functions');
-    const globalErrorRsc = path.join(functionsDir, '_global-error.rsc.func');
-    const globalError = path.join(functionsDir, '_global-error.func');
-
-    if (fs.existsSync(globalErrorRsc)) {
-        console.log('⚡️ Renaming _global-error.rsc.func to _global-error.func...');
-        if (fs.existsSync(globalError)) {
-            fs.rmSync(globalError, { recursive: true, force: true });
-        }
-        // Rename using fs.renameSync
-        try {
-            fs.renameSync(globalErrorRsc, globalError);
-            console.log('✅ Renamed successfully.');
-        } catch (renameError) {
-            console.error('⚠️ Rename failed, trying copy/delete:', renameError.message);
-            fs.cpSync(globalErrorRsc, globalError, { recursive: true });
-            fs.rmSync(globalErrorRsc, { recursive: true, force: true });
-        }
-
-    } else {
-        console.log('⚠️ _global-error.rsc.func not found. Contents of functions dir:');
-        try {
-            console.log(fs.readdirSync(functionsDir));
-        } catch (e) { console.log('Could not list dir'); }
-    }
-
-    // 2.1 Fix _not-found mismatch
-    const notFoundRsc = path.join(functionsDir, '_not-found.rsc.func');
-    const notFound = path.join(functionsDir, '_not-found.func');
-
-    if (fs.existsSync(notFoundRsc)) {
-        console.log('⚡️ Renaming _not-found.rsc.func to _not-found.func...');
-        if (fs.existsSync(notFound)) {
-            fs.rmSync(notFound, { recursive: true, force: true });
-        }
-        fs.renameSync(notFoundRsc, notFound);
-    }
-
-    // 3. Run Next-on-Pages
-    console.log(`⚡️ Running next-on-pages using ${npx}...`);
-    execSync(`${npx} @cloudflare/next-on-pages --skip-build`, { stdio: 'inherit' });
+    // 2. Run OpenNext for Cloudflare
+    console.log(`⚡️ Running OpenNext for Cloudflare using ${npx}...`);
+    execSync(`${npx} @opennextjs/cloudflare build --dangerouslyUseUnsupportedNextVersion`, { stdio: 'inherit' });
 
     console.log('✅ Build completed successfully!');
 

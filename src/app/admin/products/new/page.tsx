@@ -400,4 +400,3 @@ export default function NewProductPage() {
     )
 }
 
-export const runtime = 'edge'

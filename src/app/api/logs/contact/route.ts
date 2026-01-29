@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic'
 
 export async function POST(request: NextRequest) {
     try {
-        const { productId, productName } = await request.json()
+        const { productId, productName } = await request.json() as any
 
         await logContact(
             productId,

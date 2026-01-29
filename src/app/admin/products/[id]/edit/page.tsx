@@ -45,7 +45,7 @@ export default function EditProductPage({ params }: EditProductPageProps) {
 
             try {
                 const res = await fetch(`/api/products/${id}`)
-                const data = await res.json()
+                const data = await res.json() as any
 
                 if (data.product) {
                     const p = data.product
@@ -126,7 +126,7 @@ export default function EditProductPage({ params }: EditProductPageProps) {
                     method: 'POST',
                     body: formData,
                 })
-                const data = await res.json()
+                const data = await res.json() as any
                 if (data.success) {
                     setImages(prev => [...prev, data.imageUrl])
                 }
@@ -168,7 +168,7 @@ export default function EditProductPage({ params }: EditProductPageProps) {
                 }),
             })
 
-            const data = await res.json()
+            const data = await res.json() as any
             if (data.success) {
                 alert('บันทึกเรียบร้อยแล้ว!')
                 router.push('/admin')

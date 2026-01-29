@@ -5,7 +5,7 @@ import { logAuth } from '@/lib/logger'
 export const dynamic = 'force-dynamic'
 
 export async function POST(request: Request) {
-    const { username, password } = await request.json()
+    const { username, password } = await request.json() as any
 
     // Retrieve admin credentials from environment variables
     const adminUsername = process.env.ADMIN_USERNAME

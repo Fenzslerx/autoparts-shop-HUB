@@ -52,7 +52,7 @@ export default function NewProductPage() {
                     method: 'POST',
                     body: formData,
                 })
-                const data = await res.json()
+                const data = await res.json() as any
                 if (data.success) {
                     setImages(prev => [...prev, data.imageUrl])
                 } else {
@@ -96,7 +96,7 @@ export default function NewProductPage() {
                 }),
             })
 
-            const data = await res.json()
+            const data = await res.json() as any
             if (data.success) {
                 alert('เพิ่มสินค้าเรียบร้อยแล้ว!')
                 router.push('/admin')

@@ -36,7 +36,7 @@ export async function PUT(
     }
 
     const { id } = await params
-    const body = await request.json()
+    const body = await request.json() as any
 
     const product = await updateProduct(id, {
         name: body.name,

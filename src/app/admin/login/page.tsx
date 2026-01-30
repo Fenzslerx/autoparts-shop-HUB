@@ -38,7 +38,7 @@ export default function AdminLoginPage() {
     }
 
     return (
-        <div className="min-h-screen flex">
+        <div className="h-screen flex overflow-hidden">
             {/* Left Side - Decorative */}
             <div className="hidden lg:flex lg:w-1/2 gradient-hero relative overflow-hidden">
                 {/* Background Pattern */}

@@ -7,6 +7,11 @@ export default function Footer() {
     const pathname = usePathname();
     const showContactSection = pathname !== '/products';
 
+    // Hide footer on admin pages
+    if (pathname?.startsWith('/admin')) {
+        return null;
+    }
+
     return (
         <footer className="bg-[var(--text-primary)] text-white" id="contact">
             {/* Contact Section with Map - Hidden on /products */}

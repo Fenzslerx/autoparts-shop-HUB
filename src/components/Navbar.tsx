@@ -116,10 +116,23 @@ export default function Navbar() {
                             >
                                 ระบบไฟฟ้า
                             </Link>
+
+                            {/* Admin Login Button */}
+                            <Link
+                                href="/admin/login"
+                                className="flex items-center justify-center gap-2 px-4 py-3 rounded-full border-2 border-[var(--border)] text-[var(--text-secondary)] font-medium hover:border-[var(--primary)] hover:text-[var(--primary)] transition-all mt-2"
+                                onClick={() => setIsMenuOpen(false)}
+                            >
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                </svg>
+                                <span>Admin</span>
+                            </Link>
+
                             <Link
                                 href="https://line.me/R/oaMessage/@mavarix"
                                 target="_blank"
-                                className="flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-[var(--line-green)] text-white font-semibold mt-2"
+                                className="flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-[var(--line-green)] text-white font-semibold"
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">

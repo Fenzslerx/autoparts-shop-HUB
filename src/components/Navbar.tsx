@@ -20,7 +20,7 @@ export default function Navbar() {
                                 ช.โชคชัย
                             </span>
                             <span className="text-xs text-[var(--text-secondary)] font-medium tracking-wide">
-                                อะไหล่รถยนต์
+                                อะไหล่รถยนต์มือสอง
                             </span>
                         </div>
                     </Link>
@@ -127,14 +127,14 @@ export default function Navbar() {
                         <div className="flex flex-col gap-4">
                             <Link
                                 href="/"
-                                className="text-[var(--text-secondary)] hover:text-[var(--primary)] transition-colors font-medium px-2 py-1"
+                                className="text-[var(--text-secondary)] hover:text-[var(--primary)] transition-colors font-medium px-4 py-3 block rounded-lg hover:bg-gray-50"
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 หน้าแรก
                             </Link>
                             <Link
                                 href="/products"
-                                className="text-[var(--text-secondary)] hover:text-[var(--primary)] transition-colors font-medium px-2 py-1"
+                                className="text-[var(--text-secondary)] hover:text-[var(--primary)] transition-colors font-medium px-4 py-3 block rounded-lg hover:bg-gray-50"
                                 onClick={() => setIsMenuOpen(false)}
                             >
                                 สินค้าทั้งหมด

@@ -62,7 +62,7 @@ export default function AdminLoginPage() {
                             MAVARIX
                         </h1>
                         <p className="text-xl text-gray-300 mb-8">
-                            ศูนย์รวมอะไหล่รถยนต์คุณภาพ
+                            ศูนย์รวมอะไหล่รถยนต์มือสอง คุณภาพดี
                         </p>
 
                         {/* Stats */}

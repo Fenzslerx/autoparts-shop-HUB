@@ -25,19 +25,19 @@ export default async function HomePage() {
           <div className="absolute bottom-20 right-10 w-96 h-96 bg-blue-300 rounded-full blur-3xl"></div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12 md:py-16 lg:py-20">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="animate-fade-in">
               <span className="inline-block px-4 py-2 bg-white/10 rounded-full text-sm font-medium mb-6 backdrop-blur-sm">
-                🚗 ศูนย์รวมอะไหล่รถยนต์คุณภาพ
+                🚗 ศูนย์รวมอะไหล่รถยนต์มือสอง ราคาถูก
               </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-                อะไหล่รถยนต์
-                <span className="block text-[var(--secondary)]">คุณภาพสูง ราคาย่อมเยา</span>
+              <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-6 leading-tight">
+                อะไหล่รถยนต์มือสอง
+                <span className="block text-[var(--secondary)] mt-2">คุณภาพดี ราคาถูก</span>
               </h1>
               <p className="text-lg text-gray-300 mb-8 max-w-lg">
-                ครบทุกยี่ห้อ ทุกรุ่น Toyota, Honda, Mazda, Isuzu และอื่นๆ
-                พร้อมบริการจัดส่งทั่วประเทศ รับประกันคุณภาพทุกชิ้น
+                อะไหล่แท้ถอด เชียงกง คัดเกรด A ทุกชิ้น รับประกันคุณภาพ
+                มีครบทุกรุ่น Toyota, Honda, Mazda, Isuzu พร้อมส่งทั่วไทย
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link
@@ -60,8 +60,9 @@ export default async function HomePage() {
             </div>
 
             {/* Hero Image with Fade */}
-            <div className="hidden lg:block animate-slide-up">
-              <div className="relative w-[500px] h-[400px] overflow-hidden rounded-3xl shadow-2xl">
+            {/* Hero Image with Fade */}
+            <div className="block animate-slide-up mb-8 lg:mb-0 lg:mt-0 order-first lg:order-last">
+              <div className="relative w-full h-[300px] lg:w-[500px] lg:h-[400px] overflow-hidden rounded-3xl shadow-2xl mx-auto">
                 <img
                   src="/uploads/shop-photo.jpg"
                   alt="MAVARIX Shop"
@@ -75,7 +76,7 @@ export default async function HomePage() {
                 {/* Shop label */}
                 <div className="absolute bottom-6 left-6 z-10">
                   <p className="text-white/80 text-sm">หน้าร้าน</p>
-                  <p className="text-white font-bold text-xl">MAVARIX</p>
+                  <p className="text-white font-bold text-xl">ช.โชคชัย อะไหล่รถยนต์มือสอง</p>
                 </div>
               </div>
             </div>
@@ -91,29 +92,15 @@ export default async function HomePage() {
       </section>
 
       {/* Car Brands */}
-      <section className="py-12 bg-[var(--background)]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-            {carBrands.map((brand) => (
-              <Link
-                key={brand.id}
-                href={`/products?brand=${brand.id}`}
-                className="text-2xl font-bold text-[var(--text-muted)] hover:text-[var(--primary)] transition-colors"
-              >
-                {brand.name}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* Search Section */}
       <HomeSearch />
 
       {/* Featured Products */}
-      <section className="py-16 bg-[var(--background)]">
+      <section className="py-8 bg-[var(--background)]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center mb-12">
+          <div className="flex justify-between items-center mb-6">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-2">
                 สินค้าแนะนำ
@@ -133,7 +120,7 @@ export default async function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {featuredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
@@ -151,9 +138,9 @@ export default async function HomePage() {
       </section>
 
       {/* Why Choose Us */}
-      <section className="py-16 bg-white">
+      <section className="py-10 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-8">
             <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4">
               ทำไมต้องเลือกเรา?
             </h2>
@@ -168,7 +155,7 @@ export default async function HomePage() {
               </div>
               <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2">สินค้าคุณภาพ</h3>
               <p className="text-[var(--text-secondary)]">
-                อะไหล่แท้ OEM และ Aftermarket คุณภาพสูง รับประกันทุกชิ้น
+                อะไหล่แท้ถอด คัดเกรด A จากญี่ปุ่นและศูนย์ไทย รับประกันคุณภาพทุกชิ้น
               </p>
             </div>
 
@@ -180,7 +167,7 @@ export default async function HomePage() {
               </div>
               <h3 className="text-xl font-bold text-[var(--text-primary)] mb-2">ราคายุติธรรม</h3>
               <p className="text-[var(--text-secondary)]">
-                เปรียบเทียบราคาได้ รับประกันคุ้มค่าทุกบาท
+                ราคาถูกกว่าเบิกศูนย์ ย่อมเยา สบายกระเป๋า
               </p>
             </div>
 

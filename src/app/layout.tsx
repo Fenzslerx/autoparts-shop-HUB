@@ -12,12 +12,12 @@ const inter = Inter({
 
 
 export const metadata: Metadata = {
-  title: "MAVARIX - ศูนย์รวมอะไหล่รถยนต์คุณภาพ",
-  description: "ศูนย์รวมอะไหล่รถยนต์คุณภาพสูง ราคาย่อมเยา ครบทุกยี่ห้อ Toyota, Honda, Mazda, Isuzu และอื่นๆ พร้อมบริการจัดส่งทั่วประเทศ",
-  keywords: "อะไหล่รถยนต์, อะไหล่แท้, Toyota, Honda, Mazda, อะไหล่รถ, ชิ้นส่วนรถยนต์",
+  title: "MAVARIX - ศูนย์รวมอะไหล่รถยนต์มือสอง ราคาถูก",
+  description: "ศูนย์รวมอะไหล่รถยนต์มือสองคุณภาพดี ราคาถูก คัดเกรด A รับประกันคุณภาพ มีครบทุกยี่ห้อ Toyota, Honda, Mazda, Isuzu พร้อมส่งทั่วไทย",
+  keywords: "อะไหล่รถยนต์มือสอง, เชียงกง, อะไหล่รถบ้าน, อะไหล่ถอด, Toyota, Honda, Mazda",
   openGraph: {
-    title: "MAVARIX - ศูนย์รวมอะไหล่รถยนต์คุณภาพ",
-    description: "ศูนย์รวมอะไหล่รถยนต์คุณภาพสูง ราคาย่อมเยา ครบทุกยี่ห้อ",
+    title: "MAVARIX - ศูนย์รวมอะไหล่รถยนต์มือสอง ราคาถูก",
+    description: "อะไหล่รถยนต์มือสอง คัดเกรดคุณภาพ ราคาสบายกระเป๋า",
     type: "website",
     locale: "th_TH",
   },

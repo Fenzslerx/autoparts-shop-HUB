@@ -129,12 +129,18 @@ body {
 
 /* Button styles */
 .btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   background: var(--primary);
   color: white;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-weight: 600;
+  padding: 16px 32px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1.125rem;
+  cursor: pointer;
   transition: all 0.3s ease;
+  min-height: 56px;
 }
 
 .btn-primary:hover {
@@ -146,14 +152,17 @@ body {
 .btn-line {
   background: var(--line-green);
   color: white;
-  padding: 14px 28px;
+  padding: 16px 32px;
   border-radius: 12px;
   font-weight: 700;
-  font-size: 1.1rem;
+  font-size: 1.125rem;
+  cursor: pointer;
   transition: all 0.3s ease;
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 12px;
+  min-height: 56px;
 }
 
 .btn-line:hover {

@@ -70,9 +70,9 @@ export default function SearchFilter({ onFilterChange }: SearchFilterProps) {
     return (
         <div className="bg-white rounded-2xl shadow-sm border border-[var(--border)] p-6 mb-8">
             {/* Search Bar */}
-            <div className="relative mb-4">
+            <div className="relative mb-6">
                 <svg
-                    className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-[var(--text-muted)]"
+                    className="absolute left-4 top-1/2 -translate-y-1/2 w-6 h-6 text-[var(--text-muted)]"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -84,7 +84,7 @@ export default function SearchFilter({ onFilterChange }: SearchFilterProps) {
                     placeholder="ค้นหาอะไหล่... (ชื่อ, ยี่ห้อ, รุ่น)"
                     value={filters.search}
                     onChange={(e) => handleFilterChange('search', e.target.value)}
-                    className="w-full pl-12 pr-4 py-4 border-2 border-[var(--border)] rounded-xl text-lg focus:outline-none focus:border-[var(--primary)] transition-colors"
+                    className="w-full pl-12 pr-4 py-4 border-2 border-[var(--border)] rounded-xl text-base md:text-lg focus:outline-none focus:border-[var(--primary)] transition-colors"
                 />
             </div>
 
@@ -93,8 +93,8 @@ export default function SearchFilter({ onFilterChange }: SearchFilterProps) {
                 <button
                     onClick={() => handleFilterChange('category', '')}
                     className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${filters.category === ''
-                            ? 'bg-[var(--primary)] text-white'
-                            : 'bg-gray-100 text-[var(--text-secondary)] hover:bg-gray-200'
+                        ? 'bg-[var(--primary)] text-white'
+                        : 'bg-gray-100 text-[var(--text-secondary)] hover:bg-gray-200'
                         }`}
                 >
                     ทั้งหมด
@@ -104,8 +104,8 @@ export default function SearchFilter({ onFilterChange }: SearchFilterProps) {
                         key={cat.id}
                         onClick={() => handleFilterChange('category', cat.id)}
                         className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${filters.category === cat.id
-                                ? 'bg-[var(--primary)] text-white'
-                                : 'bg-gray-100 text-[var(--text-secondary)] hover:bg-gray-200'
+                            ? 'bg-[var(--primary)] text-white'
+                            : 'bg-gray-100 text-[var(--text-secondary)] hover:bg-gray-200'
                             }`}
                     >
                         {cat.icon} {cat.name}
@@ -131,7 +131,7 @@ export default function SearchFilter({ onFilterChange }: SearchFilterProps) {
 
             {/* Expanded Filters */}
             {isExpanded && (
-                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 pt-4 border-t border-[var(--border)]">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-4 border-t border-[var(--border)]">
                     {/* Brand */}
                     <div>
                         <label className="block text-sm font-medium text-[var(--text-secondary)] mb-2">

@@ -94,7 +94,7 @@ export default function AboutPage() {
                                 </svg>
                             </div>
                             <h3 className="font-bold mb-2">LINE Official</h3>
-                            <a href="https://line.me/R/oaMessage/@mavarix" target="_blank" className="text-[#06C755] font-medium hover:underline">@mavarix</a>
+                            <a href="https://line.me/R/oaMessage/0890071802" target="_blank" className="text-[#06C755] font-medium hover:underline">0890071802</a>
                         </div>
                     </div>
                 </div>
@@ -109,7 +109,7 @@ export default function AboutPage() {
                         <Link href="/products" className="btn-primary bg-white text-blue-900 hover:bg-blue-50">
                             🛒 ดูสินค้าทั้งหมด
                         </Link>
-                        <a href="https://line.me/R/oaMessage/@mavarix" target="_blank" className="btn-line">
+                        <a href="https://line.me/R/oaMessage/0890071802" target="_blank" className="btn-line">
                             💬 ติดต่อทาง LINE
                         </a>
                     </div>

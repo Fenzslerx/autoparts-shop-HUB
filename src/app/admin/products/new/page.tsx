@@ -138,8 +138,8 @@ export default function NewProductPage() {
             {/* Toast Notification */}
             {toast && (
                 <div className={`fixed top-4 right-4 z-50 px-6 py-4 rounded-xl shadow-lg flex items-center gap-3 animate-slide-up ${toast.type === 'success'
-                        ? 'bg-green-500 text-white'
-                        : 'bg-red-500 text-white'
+                    ? 'bg-green-500 text-white'
+                    : 'bg-red-500 text-white'
                     }`}>
                     {toast.type === 'success' ? (
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -276,7 +276,7 @@ export default function NewProductPage() {
                 {/* Category */}
                 <div className="mb-6">
                     <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
-                        หมวดหมู่ *
+                        หมวดหมู่
                     </label>
                     <div className="flex items-center gap-2 mb-2">
                         <input
@@ -293,7 +293,6 @@ export default function NewProductPage() {
                     {useCustomCategory ? (
                         <input
                             type="text"
-                            required
                             value={customCategory}
                             onChange={(e) => setCustomCategory(e.target.value)}
                             className="input-field"
@@ -301,7 +300,6 @@ export default function NewProductPage() {
                         />
                     ) : (
                         <select
-                            required
                             value={formData.category}
                             onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                             className="input-field"

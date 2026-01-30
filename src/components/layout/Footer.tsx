@@ -34,7 +34,7 @@ export default function Footer() {
                                 <div className="space-y-4">
                                     {/* LINE - Main CTA */}
                                     <a
-                                        href="https://line.me/R/oaMessage/@mavarix"
+                                        href="https://line.me/R/oaMessage/0890071802"
                                         target="_blank"
                                         className="flex items-center gap-4 p-4 bg-[var(--line-green)] rounded-xl hover:brightness-110 transition-all"
                                     >
@@ -45,7 +45,7 @@ export default function Footer() {
                                         </div>
                                         <div>
                                             <p className="font-bold text-lg">แอดไลน์สอบถาม</p>
-                                            <p className="text-white/90">@mavarix</p>
+                                            <p className="text-white/90">0890071802</p>
                                         </div>
                                         <span className="ml-auto text-2xl">→</span>
                                     </a>
@@ -152,7 +152,7 @@ export default function Footer() {
                     {/* Social */}
                     <div className="flex gap-3">
                         <a
-                            href="https://line.me/R/oaMessage/@mavarix"
+                            href="https://line.me/R/oaMessage/0890071802"
                             target="_blank"
                             className="w-10 h-10 rounded-full bg-[var(--line-green)] flex items-center justify-center hover:scale-110 transition-transform"
                         >

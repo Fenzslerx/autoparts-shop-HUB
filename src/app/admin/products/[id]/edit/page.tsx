@@ -309,7 +309,7 @@ export default function EditProductPage({ params }: EditProductPageProps) {
                 {/* Category */}
                 <div className="mb-6">
                     <label className="block text-sm font-medium text-[var(--text-primary)] mb-2">
-                        หมวดหมู่ *
+                        หมวดหมู่
                     </label>
                     <div className="flex items-center gap-2 mb-2">
                         <input
@@ -326,7 +326,6 @@ export default function EditProductPage({ params }: EditProductPageProps) {
                     {useCustomCategory ? (
                         <input
                             type="text"
-                            required
                             value={customCategory}
                             onChange={(e) => setCustomCategory(e.target.value)}
                             className="input-field"
@@ -334,7 +333,6 @@ export default function EditProductPage({ params }: EditProductPageProps) {
                         />
                     ) : (
                         <select
-                            required
                             value={formData.category}
                             onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                             className="input-field"

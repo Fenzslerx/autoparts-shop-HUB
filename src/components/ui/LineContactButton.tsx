@@ -13,7 +13,7 @@ export default function LineContactButton({
     productName,
     productId,
     price,
-    lineId = '@mavarix',
+    lineId = '0890071802',
     size = 'lg',
     fullWidth = false
 }: LineContactButtonProps) {

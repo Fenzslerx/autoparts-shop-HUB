@@ -23,7 +23,7 @@ export default function LineContactButton({
     );
 
     // LINE OA Message URL
-    const lineUrl = `https://line.me/R/oaMessage/${lineId}/?${message}`;
+    const lineUrl = `https://line.me/ti/p/~${lineId}?${message}`;
 
     const sizeClasses = {
         sm: 'py-2 px-4 text-sm gap-2',

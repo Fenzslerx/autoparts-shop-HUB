@@ -19,7 +19,7 @@ export default function ContactSection() {
                         <div className="space-y-6">
                             {/* LINE */}
                             <a
-                                href="https://line.me/R/oaMessage/0890071802"
+                                href="https://line.me/ti/p/~0890071802"
                                 target="_blank"
                                 className="flex items-center gap-4 p-4 bg-white rounded-xl hover:shadow-md transition-all group"
                             >

@@ -40,7 +40,7 @@ export default function HeroSection() {
                                 <span className="mr-2">🛒</span> เลือกซื้อสินค้า
                             </Link>
                             <a
-                                href="https://line.me/R/oaMessage/0890071802"
+                                href="https://line.me/ti/p/~0890071802"
                                 target="_blank"
                                 className="btn-line shadow-lg shadow-green-900/20"
                             >

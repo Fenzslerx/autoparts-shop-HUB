@@ -64,7 +64,8 @@ export async function updateProduct(id: string, updates: Partial<Product>): Prom
 }
 
 export async function deleteProduct(id: string): Promise<boolean> {
-    await executeD1Query('DELETE FROM products WHERE id = ?', [id])
+    // Soft delete - just mark as inactive
+    await executeD1Query('UPDATE products SET is_active = 0 WHERE id = ?', [id])
     return true
 }
 

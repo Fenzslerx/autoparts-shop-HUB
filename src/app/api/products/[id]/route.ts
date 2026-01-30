@@ -8,7 +8,7 @@ import { cookies } from 'next/headers'
 async function checkAuth() {
     const cookieStore = await cookies()
     const authCookie = cookieStore.get('admin_auth')
-    return authCookie?.value === 'authenticated'
+    return authCookie?.value === 'true'
 }
 
 // GET single product

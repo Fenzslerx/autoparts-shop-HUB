@@ -17,28 +17,33 @@ export default function HeroSection() {
                     <div className="animate-fade-in text-center lg:text-left">
                         <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-sm font-medium mb-8 backdrop-blur-md border border-white/10 shadow-lg">
                             <span className="w-2 h-2 rounded-full bg-[var(--secondary)] animate-pulse"></span>
-                            ศูนย์รวมอะไหล่รถยนต์มือสอง ราคาถูก
+                            ขายรถและอะไหล่มือสอง มีรถสไลด์
                         </div>
 
                         <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 leading-tight tracking-tight">
-                            อะไหล่รถยนต์
+                            ช.โชคชัย
                             <span className="block text-blue-200">
-                                มือสองคุณภาพ
+                                รถและอะไหล่มือสอง
                             </span>
-                            <span className="text-[var(--secondary)]">ราคาประหยัด</span>
+                            <span className="text-[var(--secondary)]">มีรถสไลด์</span>
                         </h1>
 
                         <p className="text-lg md:text-xl text-blue-100/90 mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
-                            อะไหล่แท้ถอด คัดเกรด A จากเชียงกง มีครบทุกรุ่น Toyota, Honda, Isuzu รับประกันคุณภาพ พร้อมจัดส่งทั่วไทย
+                            ขายรถมือสอง อะไหล่มือสอง และบริการรถสไลด์ ราคาถูก คุณภาพดี พร้อมส่งทั่วไทย
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                            <Link
-                                href="/products"
-                                className="btn-primary bg-white text-blue-900 hover:bg-blue-50 hover:text-blue-800 border-2 border-transparent hover:border-blue-100"
+                            <a
+                                href="https://www.facebook.com/chokhchay.xahil.kea?locale=th_TH"
+                                target="_blank"
+                                className="btn-primary bg-white text-blue-600 hover:bg-blue-50 hover:text-blue-800 border-2 border-transparent hover:border-blue-100 flex items-center gap-2"
                             >
-                                <span className="mr-2">🛒</span> เลือกซื้อสินค้า
-                            </Link>
+                                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                                </svg>
+                                Facebook
+                                <span className="px-2 py-0.5 bg-blue-100 text-blue-600 rounded-full text-xs font-semibold">ช่องทางหลัก</span>
+                            </a>
                             <a
                                 href="https://line.me/ti/p/~0890071802"
                                 target="_blank"
@@ -75,7 +80,7 @@ export default function HeroSection() {
                                         <span className="text-xs font-semibold text-white tracking-wider uppercase">Verified Seller</span>
                                     </div>
                                     <h3 className="text-2xl md:text-3xl font-bold text-white mb-1">ช.โชคชัย</h3>
-                                    <p className="text-white/80 font-medium text-sm md:text-base">อะไหล่รถยนต์มือสอง คุณภาพเยี่ยม</p>
+                                    <p className="text-white/80 font-medium text-sm md:text-base">รถและอะไหล่มือสอง มีรถสไลด์</p>
                                 </div>
                             </div>
 

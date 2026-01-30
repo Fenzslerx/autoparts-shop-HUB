@@ -5,6 +5,9 @@ import { VisitorLogger } from '@/components/common/VisitorLogger';
 import LineContactButton from '@/components/ui/LineContactButton';
 import ProductCard from '@/components/products/ProductCard';
 import ImageGallery from '@/components/ui/ImageGallery';
+import ShareButtons from '@/components/products/ShareButtons';
+import RecentlyViewed from '@/components/products/RecentlyViewed';
+import WishlistButton from '@/components/products/WishlistButton';
 import { getProducts, getProductById } from '@/lib/db';
 import { getCategoryById, formatPrice } from '@/lib/data';
 
@@ -171,6 +174,12 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                                 </div>
                             </div>
 
+                            {/* Actions */}
+                            <div className="flex items-center gap-4 mb-6">
+                                <WishlistButton productId={product.id} productName={product.name} size="lg" />
+                                <ShareButtons url={`/products/${product.id}`} title={product.name} price={product.price} />
+                            </div>
+
                             {/* CTA Button */}
                             <div className="mt-auto">
                                 <LineContactButton
@@ -186,6 +195,11 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                         </div>
                     </div>
                 </div>
+            </div>
+
+            {/* Recently Viewed */}
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <RecentlyViewed currentProductId={product.id} />
             </div>
 
             {/* Related Products */}

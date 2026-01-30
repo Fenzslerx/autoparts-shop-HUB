@@ -1,7 +1,11 @@
+'use client'
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Product } from '@/lib/types';
 import { formatPrice } from '@/lib/data';
+import WishlistButton from './WishlistButton';
+import StockBadge from './StockBadge';
 
 interface ProductCardProps {
     product: Product;
@@ -9,8 +13,8 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
     return (
-        <Link href={`/products/${product.id}`}>
-            <article className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 card-hover border border-[var(--border)]">
+        <article className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 card-hover border border-[var(--border)] relative">
+            <Link href={`/products/${product.id}`}>
                 {/* Image */}
                 <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
                     <Image
@@ -27,16 +31,25 @@ export default function ProductCard({ product }: ProductCardProps) {
                         </span>
                     </div>
                     {/* Stock Badge */}
-                    {product.stock <= 5 && product.stock > 0 && (
-                        <div className="absolute top-3 right-3">
-                            <span className="badge bg-orange-100 text-orange-600">
-                                เหลือ {product.stock} ชิ้น
-                            </span>
+                    <div className="absolute top-3 right-12">
+                        <StockBadge stock={product.stock} />
+                    </div>
+                    {/* Out of stock overlay */}
+                    {product.stock === 0 && (
+                        <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+                            <span className="bg-red-500 text-white px-4 py-2 rounded-full font-bold">สินค้าหมด</span>
                         </div>
                     )}
                 </div>
+            </Link>
 
-                {/* Content */}
+            {/* Wishlist Button - positioned absolutely */}
+            <div className="absolute top-3 right-3 z-10">
+                <WishlistButton productId={product.id} productName={product.name} size="sm" />
+            </div>
+
+            {/* Content */}
+            <Link href={`/products/${product.id}`}>
                 <div className="p-5">
                     {/* Car Info */}
                     <div className="flex items-center gap-2 text-sm text-[var(--text-secondary)] mb-2">
@@ -71,7 +84,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                         </div>
                     </div>
                 </div>
-            </article>
-        </Link>
+            </Link>
+        </article>
     );
 }

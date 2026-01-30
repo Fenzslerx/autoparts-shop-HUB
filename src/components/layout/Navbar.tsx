@@ -41,6 +41,13 @@ export default function Navbar() {
                             สินค้าทั้งหมด
                             <span className="absolute inset-x-0 bottom-[-4px] h-0.5 bg-[var(--primary)] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
                         </Link>
+                        <Link
+                            href="/about"
+                            className="text-[var(--text-secondary)] hover:text-[var(--primary)] transition-colors font-medium relative group"
+                        >
+                            เกี่ยวกับเรา
+                            <span className="absolute inset-x-0 bottom-[-4px] h-0.5 bg-[var(--primary)] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></span>
+                        </Link>
 
                         {/* Categories Dropdown */}
                         <div className="relative group">
@@ -143,6 +150,13 @@ export default function Navbar() {
                             onClick={() => setIsMenuOpen(false)}
                         >
                             <span className="text-xl">📦</span> สินค้าทั้งหมด
+                        </Link>
+                        <Link
+                            href="/about"
+                            className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-blue-50 text-gray-700 hover:text-[var(--primary)] font-medium transition-colors"
+                            onClick={() => setIsMenuOpen(false)}
+                        >
+                            <span className="text-xl">ℹ️</span> เกี่ยวกับเรา
                         </Link>
 
                         <div className="px-4 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">หมวดหมู่สินค้า</div>

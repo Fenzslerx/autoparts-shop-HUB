@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 import SearchFilter from '@/components/products/SearchFilter';
 import ProductGrid from '@/components/products/ProductGrid';
+import PriceFilter from '@/components/products/PriceFilter';
 import { VisitorLogger } from '@/components/common/VisitorLogger';
 import { getProducts } from '@/lib/db';
 import { carBrands, getCategoryById } from '@/lib/data';
@@ -16,6 +17,8 @@ interface ProductsPageProps {
         brand?: string;
         model?: string;
         sortBy?: string;
+        minPrice?: string;
+        maxPrice?: string;
     }>;
 }
 
@@ -35,7 +38,7 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
                         {categoryName ? `${categoryName}` : brandInfo ? `อะไหล่ ${brandInfo.name}` : 'สินค้าทั้งหมด'}
                     </h1>
                     <p className="text-[var(--text-secondary)] mt-2">
-                        อัพเดทอัตโนมัติทุก 10 วินาที
+                        {allProducts.length} รายการ • อัพเดทอัตโนมัติทุก 10 วินาที
                     </p>
                 </div>
             </div>
@@ -45,6 +48,11 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
                 {/* Search & Filter */}
                 <Suspense fallback={<div className="h-32 bg-white rounded-2xl animate-pulse" />}>
                     <SearchFilter />
+                </Suspense>
+
+                {/* Price Filter & Sort */}
+                <Suspense fallback={<div className="h-16 bg-white rounded-2xl animate-pulse mb-6" />}>
+                    <PriceFilter />
                 </Suspense>
 
                 {/* Products Grid with Auto-Refresh */}

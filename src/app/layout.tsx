@@ -4,6 +4,7 @@ import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ChatBot from "@/components/chatbot/ChatBot";
+import WishlistDrawer from "@/components/products/WishlistDrawer";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -38,6 +39,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <ChatBot />
+        <WishlistDrawer />
       </body>
     </html>
   );

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import { useSearchParams } from 'next/navigation'
 import ProductCard from '@/components/products/ProductCard'
 import { Product } from '@/lib/types'
 
@@ -17,6 +18,7 @@ interface ProductGridProps {
 export default function ProductGrid({ initialProducts, filters }: ProductGridProps) {
     const [products, setProducts] = useState<Product[]>(initialProducts)
     const [isRefreshing, setIsRefreshing] = useState(false)
+    const searchParams = useSearchParams()
 
     const fetchProducts = useCallback(async () => {
         try {
@@ -53,6 +55,11 @@ export default function ProductGrid({ initialProducts, filters }: ProductGridPro
         return () => window.removeEventListener('focus', handleFocus)
     }, [fetchProducts])
 
+    // Get URL params for filtering
+    const minPrice = searchParams.get('minPrice')
+    const maxPrice = searchParams.get('maxPrice')
+    const sortBy = searchParams.get('sortBy')
+
     // Filter products client-side
     let filteredProducts = [...products]
 
@@ -70,10 +77,31 @@ export default function ProductGrid({ initialProducts, filters }: ProductGridPro
         filteredProducts = filteredProducts.filter(p => p.category === filters.category)
     }
 
-    // Sort by newest first
-    filteredProducts.sort((a, b) =>
-        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
-    )
+    // Price filter
+    if (minPrice) {
+        filteredProducts = filteredProducts.filter(p => p.price >= parseInt(minPrice))
+    }
+    if (maxPrice) {
+        filteredProducts = filteredProducts.filter(p => p.price <= parseInt(maxPrice))
+    }
+
+    // Sorting
+    switch (sortBy) {
+        case 'price-asc':
+            filteredProducts.sort((a, b) => a.price - b.price)
+            break
+        case 'price-desc':
+            filteredProducts.sort((a, b) => b.price - a.price)
+            break
+        case 'name':
+            filteredProducts.sort((a, b) => a.name.localeCompare(b.name, 'th'))
+            break
+        default:
+            // Sort by newest first
+            filteredProducts.sort((a, b) =>
+                new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+            )
+    }
 
     return (
         <div>

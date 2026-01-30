@@ -3,6 +3,7 @@ import Link from "next/link"
 import { isAuthenticated } from "@/lib/auth"
 import { getProducts } from "@/lib/db"
 import { categories, carBrands } from "@/lib/data"
+import AdminStatsPanel from "@/components/auth/AdminStatsPanel"
 
 export const dynamic = 'force-dynamic'
 
@@ -36,6 +37,11 @@ export default async function AdminDashboard() {
                 <p className="text-[var(--text-secondary)] mt-2">
                     จัดการร้านค้าของคุณได้ที่นี่
                 </p>
+            </div>
+
+            {/* Advanced Stats Panel */}
+            <div className="mb-8">
+                <AdminStatsPanel />
             </div>
 
             {/* Quick Stats */}

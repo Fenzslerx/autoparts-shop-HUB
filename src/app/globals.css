@@ -8,6 +8,8 @@
   --secondary: #F59E0B;
   --secondary-light: #FCD34D;
   --accent: #06C755;
+  --line-green: #06C755;
+  --line-green-hover: #05B04A;
   /* LINE Green */
 
   --background: #F8FAFC;
@@ -78,6 +80,7 @@ body {
 
 .gradient-text {
   background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 100%);
+  background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -162,6 +165,22 @@ body {
 
 .animate-float {
   animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse-line {
+
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(6, 199, 85, 0.4);
+  }
+
+  50% {
+    box-shadow: 0 0 0 10px rgba(6, 199, 85, 0);
+  }
+}
+
+.animate-pulse-line {
+  animation: pulse-line 2s infinite;
 }
 
 /* Card hover effects */

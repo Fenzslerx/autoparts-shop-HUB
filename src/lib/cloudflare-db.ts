@@ -10,8 +10,18 @@ interface D1Response {
     result: Array<{
         results: any[];
         success: boolean;
+        meta?: any;
     }>;
     errors: any[];
+}
+
+// Escape string for SQL
+function escapeSql(value: any): string {
+    if (value === null || value === undefined) return 'NULL';
+    if (typeof value === 'number') return String(value);
+    if (typeof value === 'boolean') return value ? '1' : '0';
+    // Escape single quotes by doubling them
+    return `'${String(value).replace(/'/g, "''")}'`;
 }
 
 // Execute D1 query via REST API
@@ -25,6 +35,16 @@ export async function executeD1Query(sql: string, params: any[] = []): Promise<a
     }
 
     try {
+        // Replace ? placeholders with actual escaped values
+        let finalSql = sql;
+        let paramIndex = 0;
+        finalSql = sql.replace(/\?/g, () => {
+            const value = params[paramIndex++];
+            return escapeSql(value);
+        });
+
+        console.log('Executing D1 Query:', finalSql.substring(0, 200));
+
         const response = await fetch(
             `https://api.cloudflare.com/client/v4/accounts/${CLOUDFLARE_ACCOUNT_ID}/d1/database/${D1_DATABASE_ID}/query`,
             {
@@ -33,7 +53,7 @@ export async function executeD1Query(sql: string, params: any[] = []): Promise<a
                     'Authorization': `Bearer ${CLOUDFLARE_API_TOKEN}`,
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ sql, params }),
+                body: JSON.stringify({ sql: finalSql }),
             }
         );
 
@@ -160,7 +180,7 @@ export async function updateProductInD1(id: string, product: Partial<Product>): 
     values.push(now);
     values.push(id);
 
-    const result = await executeD1Query(
+    await executeD1Query(
         `UPDATE products SET ${updates.join(', ')} WHERE id = ?`,
         values
     );

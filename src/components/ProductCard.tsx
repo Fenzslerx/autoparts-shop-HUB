@@ -14,7 +14,7 @@ export default function ProductCard({ product }: ProductCardProps) {
                 {/* Image */}
                 <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
                     <Image
-                        src={product.imageUrl}
+                        src={product.imageUrl || 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=400&h=300&fit=crop'}
                         alt={product.name}
                         fill
                         className="object-cover group-hover:scale-110 transition-transform duration-500"

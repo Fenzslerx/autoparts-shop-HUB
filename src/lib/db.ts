@@ -6,21 +6,9 @@ import { getProductsFromD1, addProductToD1, executeD1Query } from './cloudflare-
 
 export async function getProducts(): Promise<Product[]> {
     try {
+        // getProductsFromD1 already returns camelCase mapped data
         const products = await getProductsFromD1()
-        return products.map((p: any) => ({
-            id: p.id,
-            name: p.name,
-            description: p.description,
-            price: p.price,
-            carBrand: p.car_brand,
-            carModel: p.car_model,
-            carYear: p.car_year,
-            category: p.category,
-            imageUrl: p.image_url,
-            stock: p.stock,
-            createdAt: p.created_at,
-            updatedAt: p.updated_at
-        })) as Product[]
+        return products
     } catch (error) {
         console.error('Error fetching products from D1:', error)
         return []

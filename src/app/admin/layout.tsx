@@ -16,30 +16,31 @@ export default async function AdminLayout({
             {isAuth && (
                 <header className="bg-white border-b border-[var(--border)] sticky top-16 z-40">
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                        {/* Desktop & Mobile Header */}
                         <div className="flex items-center justify-between h-14">
-                            <div className="flex items-center gap-6">
-                                <span className="font-semibold text-[var(--primary)]">🛠️ Admin Panel</span>
-                                <nav className="hidden md:flex items-center gap-4">
-                                    <Link
-                                        href="/admin"
-                                        className="text-sm text-[var(--text-secondary)] hover:text-[var(--primary)] transition-colors"
-                                    >
-                                        Dashboard
-                                    </Link>
-                                    <Link
-                                        href="/admin/products"
-                                        className="text-sm text-[var(--text-secondary)] hover:text-[var(--primary)] transition-colors"
-                                    >
-                                        จัดการสินค้า
-                                    </Link>
-                                    <Link
-                                        href="/admin/logs"
-                                        className="text-sm text-[var(--text-secondary)] hover:text-[var(--primary)] transition-colors"
-                                    >
-                                        Logs
-                                    </Link>
-                                </nav>
-                            </div>
+                            <span className="font-semibold text-[var(--primary)] whitespace-nowrap">🛠️ Admin</span>
+
+                            {/* Navigation - visible on all screens */}
+                            <nav className="flex items-center gap-2 sm:gap-4 overflow-x-auto">
+                                <Link
+                                    href="/admin"
+                                    className="text-xs sm:text-sm text-[var(--text-secondary)] hover:text-[var(--primary)] transition-colors px-2 py-1 whitespace-nowrap"
+                                >
+                                    Dashboard
+                                </Link>
+                                <Link
+                                    href="/admin/products"
+                                    className="text-xs sm:text-sm text-[var(--text-secondary)] hover:text-[var(--primary)] transition-colors px-2 py-1 whitespace-nowrap"
+                                >
+                                    จัดการสินค้า
+                                </Link>
+                                <Link
+                                    href="/admin/logs"
+                                    className="text-xs sm:text-sm text-[var(--text-secondary)] hover:text-[var(--primary)] transition-colors px-2 py-1 whitespace-nowrap"
+                                >
+                                    Logs
+                                </Link>
+                            </nav>
 
                             <LogoutButton />
                         </div>

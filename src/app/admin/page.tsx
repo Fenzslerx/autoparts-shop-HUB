@@ -91,16 +91,14 @@ export default async function AdminDashboard() {
 
             {/* Category Stats */}
             {categoryCounts.length > 0 && (
-                <div className="bg-white rounded-2xl p-6 border border-[var(--border)] mb-8">
-                    <h2 className="text-xl font-bold text-[var(--text-primary)] mb-4">สินค้าตามหมวดหมู่</h2>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div className="bg-white rounded-2xl p-4 sm:p-6 border border-[var(--border)] mb-8">
+                    <h2 className="text-lg font-bold text-[var(--text-primary)] mb-3">สินค้าตามหมวดหมู่</h2>
+                    <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 sm:gap-3">
                         {categoryCounts.map(cat => (
-                            <div key={cat.id} className="flex items-center gap-3 p-3 bg-[var(--background)] rounded-xl">
-                                <span className="text-2xl">{cat.icon}</span>
-                                <div>
-                                    <p className="font-medium text-[var(--text-primary)]">{cat.name}</p>
-                                    <p className="text-sm text-[var(--text-secondary)]">{cat.count} รายการ</p>
-                                </div>
+                            <div key={cat.id} className="flex flex-col items-center text-center p-2 sm:p-3 bg-[var(--background)] rounded-xl">
+                                <span className="text-lg sm:text-xl">{cat.icon}</span>
+                                <p className="text-xs font-medium text-[var(--text-primary)] mt-1 line-clamp-1">{cat.name}</p>
+                                <p className="text-xs text-[var(--text-secondary)]">{cat.count}</p>
                             </div>
                         ))}
                     </div>

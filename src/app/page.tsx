@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import ProductCard from '@/components/ProductCard';
-import ContactSection from '@/components/ContactSection';
+
 import { categories, carBrands } from '@/lib/data';
 import { getProducts } from '@/lib/db';
 
@@ -250,8 +250,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Contact Section with Map */}
-      <ContactSection />
+
     </div>
   );
 }

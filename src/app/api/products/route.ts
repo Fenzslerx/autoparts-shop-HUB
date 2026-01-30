@@ -1,24 +1,42 @@
 import { cookies } from 'next/headers'
 import { getProductsFromD1, addProductToD1 } from '@/lib/cloudflare-db'
 import { logProductAction } from '@/lib/logger'
+import { checkRateLimit, getClientIP, rateLimitResponse } from '@/lib/rate-limiter'
 
 // Disable all caching
 export const dynamic = 'force-dynamic'
 export const revalidate = 0
 
-// GET all products
-export async function GET() {
+// GET all products - Rate limit: 60 requests per minute
+export async function GET(request: Request) {
+    // Rate limiting
+    const ip = getClientIP(request)
+    const rateLimit = checkRateLimit(`products-get-${ip}`, { windowMs: 60000, maxRequests: 60 })
+
+    if (!rateLimit.success) {
+        return rateLimitResponse(rateLimit.resetTime)
+    }
+
     const products = await getProductsFromD1()
     return new Response(JSON.stringify(products), {
         headers: {
             'Content-Type': 'application/json',
             'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+            'X-RateLimit-Remaining': rateLimit.remaining.toString(),
         },
     })
 }
 
-// POST create product
+// POST create product - Rate limit: 10 requests per minute
 export async function POST(request: Request) {
+    // Rate limiting (stricter for mutations)
+    const ip = getClientIP(request)
+    const rateLimit = checkRateLimit(`products-post-${ip}`, { windowMs: 60000, maxRequests: 10 })
+
+    if (!rateLimit.success) {
+        return rateLimitResponse(rateLimit.resetTime)
+    }
+
     const cookieStore = await cookies()
     const authCookie = cookieStore.get('admin_auth')
 
@@ -28,6 +46,15 @@ export async function POST(request: Request) {
 
     try {
         const body = await request.json() as any
+
+        // Basic input validation
+        if (!body.name || typeof body.name !== 'string' || body.name.length > 200) {
+            return Response.json({ success: false, error: 'Invalid product name' }, { status: 400 })
+        }
+        if (typeof body.price !== 'number' || body.price < 0) {
+            return Response.json({ success: false, error: 'Invalid price' }, { status: 400 })
+        }
+
         const newProduct = await addProductToD1(body)
 
         // Log creation (don't fail if logging fails)

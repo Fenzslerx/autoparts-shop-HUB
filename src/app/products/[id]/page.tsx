@@ -9,6 +9,7 @@ import { getProducts, getProductById } from '@/lib/db';
 import { getCategoryById, formatPrice } from '@/lib/data';
 
 export const dynamic = 'force-dynamic'
+// Force dynamic rendering to ensure fresh data
 
 interface ProductDetailPageProps {
     params: Promise<{

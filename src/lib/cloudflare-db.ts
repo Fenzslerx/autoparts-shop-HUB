@@ -131,8 +131,8 @@ export async function addProductToD1(product: any): Promise<Product> {
     const now = new Date().toISOString();
 
     await executeD1Query(
-        `INSERT INTO products (id, name, description, price, car_brand, car_model, car_year, category, image_url, stock, is_active, created_at, updated_at)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, ?, ?)`,
+        `INSERT INTO products (id, name, description, price, car_brand, car_model, car_year, category, image_url, images, stock, is_active, created_at, updated_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, ?, ?)`,
         [
             id,
             product.name,
@@ -143,6 +143,7 @@ export async function addProductToD1(product: any): Promise<Product> {
             product.carYear || '',
             product.category,
             product.imageUrl || '',
+            JSON.stringify(product.images || []), // Save images array
             product.stock || 0,
             now,
             now
@@ -173,6 +174,7 @@ export async function updateProductInD1(id: string, product: Partial<Product>): 
     if (product.carYear !== undefined) { updates.push('car_year = ?'); values.push(product.carYear); }
     if (product.category !== undefined) { updates.push('category = ?'); values.push(product.category); }
     if (product.imageUrl !== undefined) { updates.push('image_url = ?'); values.push(product.imageUrl); }
+    if (product.images !== undefined) { updates.push('images = ?'); values.push(JSON.stringify(product.images)); }
     if (product.stock !== undefined) { updates.push('stock = ?'); values.push(product.stock); }
     if (product.isActive !== undefined) { updates.push('is_active = ?'); values.push(product.isActive ? 1 : 0); }
 

@@ -1,7 +1,5 @@
 import { executeD1Query } from './cloudflare-db'
 
-export const runtime = 'edge';
-
 export type LogType = 'product' | 'auth' | 'visitor' | 'contact'
 export type LogAction =
     | 'create' | 'update' | 'delete'

@@ -24,7 +24,7 @@ export async function POST(request: Request) {
     }
 
     try {
-        const { username, password } = await request.json() as any
+        const { username, password, rememberMe } = await request.json() as any
 
         // Basic input validation
         if (!username || !password || typeof username !== 'string' || typeof password !== 'string') {
@@ -47,7 +47,7 @@ export async function POST(request: Request) {
                 httpOnly: true,
                 secure: process.env.NODE_ENV === 'production',
                 sameSite: 'strict',
-                maxAge: 60 * 60 * 24, // 1 day
+                maxAge: rememberMe ? 60 * 60 * 24 * 30 : 60 * 60 * 24 * 7, // 30 days if remember, else 7 days
                 path: '/',
             })
 

@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
@@ -8,9 +8,29 @@ export default function AdminLoginPage() {
     const router = useRouter()
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [rememberMe, setRememberMe] = useState(true)
     const [error, setError] = useState('')
     const [isLoading, setIsLoading] = useState(false)
     const [showPassword, setShowPassword] = useState(false)
+    const [isChecking, setIsChecking] = useState(true)
+
+    // Check if already logged in
+    useEffect(() => {
+        const checkAuth = async () => {
+            try {
+                const res = await fetch('/api/auth/check', { cache: 'no-store' })
+                if (res.ok) {
+                    const data = await res.json()
+                    if (data.authenticated) {
+                        router.replace('/admin')
+                        return
+                    }
+                }
+            } catch { }
+            setIsChecking(false)
+        }
+        checkAuth()
+    }, [router])
 
     const handleLogin = async (e: React.FormEvent) => {
         e.preventDefault()
@@ -20,7 +40,7 @@ export default function AdminLoginPage() {
         try {
             const res = await fetch('/api/auth/login', {
                 method: 'POST',
-                body: JSON.stringify({ username, password }),
+                body: JSON.stringify({ username, password, rememberMe }),
                 headers: { 'Content-Type': 'application/json' },
             })
 
@@ -35,6 +55,18 @@ export default function AdminLoginPage() {
         } finally {
             setIsLoading(false)
         }
+    }
+
+    // Show loading while checking auth
+    if (isChecking) {
+        return (
+            <div className="h-screen flex items-center justify-center bg-white">
+                <div className="text-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-[var(--primary)] mx-auto mb-4"></div>
+                    <p className="text-[var(--text-secondary)]">กำลังตรวจสอบ...</p>
+                </div>
+            </div>
+        )
     }
 
     return (
@@ -186,6 +218,20 @@ export default function AdminLoginPage() {
                                     )}
                                 </button>
                             </div>
+                        </div>
+
+                        {/* Remember Me */}
+                        <div className="flex items-center gap-3">
+                            <input
+                                type="checkbox"
+                                id="rememberMe"
+                                checked={rememberMe}
+                                onChange={(e) => setRememberMe(e.target.checked)}
+                                className="w-5 h-5 rounded border-gray-300 text-[var(--primary)] focus:ring-[var(--primary)]"
+                            />
+                            <label htmlFor="rememberMe" className="text-sm text-[var(--text-secondary)] cursor-pointer">
+                                จดจำการเข้าสู่ระบบ (30 วัน)
+                            </label>
                         </div>
 
                         {/* Submit Button */}

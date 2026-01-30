@@ -40,6 +40,15 @@ export async function POST(request: Request) {
         const adminUsername = process.env.ADMIN_USERNAME
         const adminPassword = process.env.ADMIN_PASSWORD
 
+        // Debug logging (remove in production)
+        console.log('Login attempt:', {
+            inputUser: username,
+            envUser: adminUsername,
+            inputPass: password?.substring(0, 3) + '***',
+            envPass: adminPassword?.substring(0, 3) + '***',
+            match: username === adminUsername && password === adminPassword
+        })
+
         if (username === adminUsername && password === adminPassword) {
             // Set a cookie manually
             const cookieStore = await cookies()

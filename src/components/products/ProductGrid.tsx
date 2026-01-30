@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import ProductCard from '@/components/ProductCard'
+import ProductCard from '@/components/products/ProductCard'
 import { Product } from '@/lib/types'
 
 interface ProductGridProps {

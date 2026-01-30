@@ -1,10 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { VisitorLogger } from '@/components/VisitorLogger';
-import LineContactButton from '@/components/LineContactButton';
-import ProductCard from '@/components/ProductCard';
-import ImageGallery from '@/components/ImageGallery';
+import { VisitorLogger } from '@/components/common/VisitorLogger';
+import LineContactButton from '@/components/ui/LineContactButton';
+import ProductCard from '@/components/products/ProductCard';
+import ImageGallery from '@/components/ui/ImageGallery';
 import { getProducts, getProductById } from '@/lib/db';
 import { getCategoryById, formatPrice } from '@/lib/data';
 

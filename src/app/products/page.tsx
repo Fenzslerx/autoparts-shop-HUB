@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
-import SearchFilter from '@/components/SearchFilter';
-import ProductGrid from '@/components/ProductGrid';
-import { VisitorLogger } from '@/components/VisitorLogger';
+import SearchFilter from '@/components/products/SearchFilter';
+import ProductGrid from '@/components/products/ProductGrid';
+import { VisitorLogger } from '@/components/common/VisitorLogger';
 import { getProducts } from '@/lib/db';
 import { carBrands, getCategoryById } from '@/lib/data';
 

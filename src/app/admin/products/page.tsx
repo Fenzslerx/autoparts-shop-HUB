@@ -3,7 +3,7 @@ import Link from "next/link"
 import { isAuthenticated } from "@/lib/auth"
 import { getProducts, deleteProduct } from "@/lib/db"
 import { formatPrice, getCategoryById } from "@/lib/data"
-import DeleteProductButton from "@/components/DeleteProductButton"
+import DeleteProductButton from "@/components/products/DeleteProductButton"
 
 export const dynamic = 'force-dynamic'
 

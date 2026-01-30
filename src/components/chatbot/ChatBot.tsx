@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
+import { CHATBOT_CONFIG } from '@/lib/constants';
 
 interface Message {
     id: string;
@@ -16,7 +17,7 @@ export default function ChatBot() {
     const [messages, setMessages] = useState<Message[]>([
         {
             id: '1',
-            text: 'สวัสดีครับ! ผมเป็นผู้ช่วยอัจฉริยะ 🤖 มีเรื่องอะไหล่ชิ้นไหนสอบถามได้เลยครับ\n\nเช่น "หาไฟหน้า Vios 2012" หรือ "ผ้าเบรค City มีของไหม"',
+            text: CHATBOT_CONFIG.WELCOME_MESSAGE,
             sender: 'bot',
             timestamp: new Date(),
         },
@@ -63,7 +64,7 @@ export default function ChatBot() {
                 },
                 body: JSON.stringify({
                     message: userMessage.text,
-                    productId: getProductContext(), // Send current product ID context if available
+                    productId: getProductContext(),
                 }),
             });
 
@@ -82,7 +83,7 @@ export default function ChatBot() {
             console.error('Error sending message:', error);
             const errorMessage: Message = {
                 id: (Date.now() + 1).toString(),
-                text: 'ขออภัยครับ เกิดข้อผิดพลาดในการเชื่อมต่อ กรุณาลองใหม่อีกครั้ง',
+                text: CHATBOT_CONFIG.ERROR_MESSAGE,
                 sender: 'bot',
                 timestamp: new Date(),
             };
@@ -134,8 +135,8 @@ export default function ChatBot() {
             {/* Chat Window */}
             <div
                 className={`fixed bottom-24 right-4 sm:right-6 w-[90vw] sm:w-[400px] bg-white rounded-2xl shadow-2xl z-50 overflow-hidden border border-gray-100 transition-all duration-300 origin-bottom-right ${isOpen
-                        ? 'opacity-100 scale-100 translate-y-0'
-                        : 'opacity-0 scale-95 translate-y-10 pointer-events-none'
+                    ? 'opacity-100 scale-100 translate-y-0'
+                    : 'opacity-0 scale-95 translate-y-10 pointer-events-none'
                     }`}
                 style={{ maxHeight: '80vh' }}
             >
@@ -160,23 +161,23 @@ export default function ChatBot() {
                         >
                             <div
                                 className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 ${msg.sender === 'user'
-                                        ? 'bg-gray-200'
-                                        : 'bg-blue-100 text-blue-600'
+                                    ? 'bg-gray-200'
+                                    : 'bg-blue-100 text-blue-600'
                                     }`}
                             >
                                 {msg.sender === 'user' ? '👤' : '🤖'}
                             </div>
                             <div
                                 className={`max-w-[75%] p-3 rounded-2xl text-sm leading-relaxed ${msg.sender === 'user'
-                                        ? 'bg-blue-600 text-white rounded-br-none'
-                                        : 'bg-white border border-gray-100 text-gray-700 shadow-sm rounded-bl-none'
+                                    ? 'bg-blue-600 text-white rounded-br-none'
+                                    : 'bg-white border border-gray-100 text-gray-700 shadow-sm rounded-bl-none'
                                     }`}
                             >
                                 <div className="whitespace-pre-wrap">{msg.text}</div>
                                 {/* Product Recommendations */}
                                 {msg.products && msg.products.length > 0 && (
                                     <div className="mt-3 space-y-2">
-                                        {msg.products.map((product) => (
+                                        {msg.products.map((product: any) => (
                                             <a
                                                 key={product.id}
                                                 href={`/products/${product.id}`}

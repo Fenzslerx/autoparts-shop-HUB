@@ -1,7 +1,7 @@
 import { redirect } from "next/navigation"
 import Link from "next/link"
 import { isAuthenticated } from "@/lib/auth"
-import LogoutButton from "@/components/LogoutButton"
+import LogoutButton from "@/components/auth/LogoutButton"
 
 export default async function AdminLayout({
     children,

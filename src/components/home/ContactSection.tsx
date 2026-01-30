@@ -43,7 +43,7 @@ export default function ContactSection() {
                                 </div>
                                 <div>
                                     <p className="font-semibold text-[var(--text-primary)]">โทรศัพท์</p>
-                                    <p className="text-[var(--text-secondary)]">02-XXX-XXXX</p>
+                                    <p className="text-[var(--text-secondary)]">089-007-1802</p>
                                 </div>
                             </div>
 
@@ -71,9 +71,9 @@ export default function ContactSection() {
                                 <div>
                                     <p className="font-semibold text-[var(--text-primary)]">ที่อยู่ร้าน</p>
                                     <p className="text-[var(--text-secondary)]">
-                                        123/45 ถนนพระราม 4<br />
-                                        แขวงคลองเตย เขตคลองเตย<br />
-                                        กรุงเทพมหานคร 10110
+                                        15/279 ซอยรัชดาภิเษก 36 แยก 9-3-4<br />
+                                        แขวงจันทรเกษม เขตจตุจักร<br />
+                                        กรุงเทพมหานคร 10900
                                     </p>
                                 </div>
                             </div>

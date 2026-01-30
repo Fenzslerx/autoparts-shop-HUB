@@ -1,8 +1,9 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import ProductCard from '@/components/ProductCard';
+import HomeSearch from '@/components/HomeSearch';
 
-import { categories, carBrands } from '@/lib/data';
+import { carBrands } from '@/lib/data';
 import { getProducts } from '@/lib/db';
 
 // Disable all caching
@@ -58,24 +59,23 @@ export default async function HomePage() {
               </div>
             </div>
 
-            {/* Hero Image/Stats */}
+            {/* Hero Image with Fade */}
             <div className="hidden lg:block animate-slide-up">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
-                  <div className="text-4xl font-bold text-[var(--secondary)]">500+</div>
-                  <div className="text-gray-300">รายการสินค้า</div>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
-                  <div className="text-4xl font-bold text-[var(--secondary)]">6</div>
-                  <div className="text-gray-300">ยี่ห้อรถยนต์</div>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
-                  <div className="text-4xl font-bold text-[var(--secondary)]">8</div>
-                  <div className="text-gray-300">หมวดหมู่</div>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 text-center">
-                  <div className="text-4xl font-bold text-[var(--secondary)]">24/7</div>
-                  <div className="text-gray-300">สั่งซื้อได้ตลอด</div>
+              <div className="relative w-[500px] h-[400px] overflow-hidden rounded-3xl shadow-2xl">
+                <img
+                  src="/uploads/shop-photo.jpg"
+                  alt="MAVARIX Shop"
+                  className="w-full h-full object-cover"
+                />
+                {/* Gradient fade overlays */}
+                <div className="absolute inset-0 bg-gradient-to-r from-[var(--primary)] via-[var(--primary)]/30 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[var(--primary)] via-transparent to-transparent opacity-70" />
+                <div className="absolute inset-0 bg-gradient-to-b from-[var(--primary)]/50 via-transparent to-transparent" />
+
+                {/* Shop label */}
+                <div className="absolute bottom-6 left-6 z-10">
+                  <p className="text-white/80 text-sm">หน้าร้าน</p>
+                  <p className="text-white font-bold text-xl">MAVARIX</p>
                 </div>
               </div>
             </div>
@@ -107,37 +107,8 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Categories */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-[var(--text-primary)] mb-4">
-              หมวดหมู่สินค้า
-            </h2>
-            <p className="text-[var(--text-secondary)] max-w-2xl mx-auto">
-              เลือกหมวดหมู่ที่ต้องการ เรามีอะไหล่ครบทุกประเภท
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {categories.map((category) => (
-              <Link
-                key={category.id}
-                href={`/products?category=${category.id}`}
-                className="group bg-[var(--background)] rounded-2xl p-6 text-center hover:bg-[var(--primary)] transition-all duration-300 card-hover"
-              >
-                <div className="text-4xl mb-3">{category.icon}</div>
-                <h3 className="font-semibold text-[var(--text-primary)] group-hover:text-white transition-colors">
-                  {category.name}
-                </h3>
-                <p className="text-sm text-[var(--text-muted)] group-hover:text-white/70 transition-colors">
-                  {category.count} รายการ
-                </p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Search Section */}
+      <HomeSearch />
 
       {/* Featured Products */}
       <section className="py-16 bg-[var(--background)]">
@@ -225,28 +196,6 @@ export default async function HomePage() {
               </p>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 gradient-hero text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            พร้อมให้บริการคุณ 24 ชั่วโมง
-          </h2>
-          <p className="text-lg text-gray-300 mb-8">
-            สนใจสินค้าชิ้นไหน แอดไลน์มาสอบถามได้เลย ตอบทุกคำถาม ไม่มีกั๊ก
-          </p>
-          <a
-            href="https://line.me/R/oaMessage/@mavarix"
-            target="_blank"
-            className="btn-line text-xl px-10 py-5"
-          >
-            <svg className="w-7 h-7" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" />
-            </svg>
-            แอดไลน์ @mavarix
-          </a>
         </div>
       </section>
 

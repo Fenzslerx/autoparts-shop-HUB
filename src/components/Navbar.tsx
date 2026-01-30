@@ -11,11 +11,18 @@ export default function Navbar() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
-                    <Link href="/" className="flex items-center gap-3">
-                        <div className="w-10 h-10 rounded-xl gradient-primary flex items-center justify-center">
-                            <span className="text-white font-bold text-xl">M</span>
+                    <Link href="/" className="flex items-center gap-3 group">
+                        <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-600 to-blue-400 flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform duration-200">
+                            <span className="text-white font-bold text-xl drop-shadow-md">ช</span>
                         </div>
-                        <span className="text-xl font-bold text-[var(--primary)]">MAVARIX</span>
+                        <div className="flex flex-col">
+                            <span className="text-xl font-bold text-[var(--primary)] leading-none group-hover:text-blue-700 transition-colors">
+                                ช.โชคชัย
+                            </span>
+                            <span className="text-xs text-[var(--text-secondary)] font-medium tracking-wide">
+                                อะไหล่รถยนต์
+                            </span>
+                        </div>
                     </Link>
 
                     {/* Desktop Navigation */}
@@ -32,18 +39,48 @@ export default function Navbar() {
                         >
                             สินค้าทั้งหมด
                         </Link>
-                        <Link
-                            href="/products?category=engine"
-                            className="text-[var(--text-secondary)] hover:text-[var(--primary)] transition-colors font-medium"
-                        >
-                            เครื่องยนต์
-                        </Link>
-                        <Link
-                            href="/products?category=electrical"
-                            className="text-[var(--text-secondary)] hover:text-[var(--primary)] transition-colors font-medium"
-                        >
-                            ระบบไฟฟ้า
-                        </Link>
+
+                        {/* Categories Dropdown */}
+                        <div className="relative group">
+                            <button
+                                className="flex items-center gap-1 text-[var(--text-secondary)] hover:text-[var(--primary)] transition-colors font-medium"
+                            >
+                                หมวดหมู่สินค้า
+                                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </button>
+
+                            {/* Dropdown Menu */}
+                            <div className="absolute top-full left-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-gray-100 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform translate-y-2 group-hover:translate-y-0">
+                                <div className="p-2 space-y-1">
+                                    <Link href="/products?category=engine" className="block px-4 py-2 hover:bg-gray-50 rounded-lg text-sm text-gray-700 hover:text-[var(--primary)]">
+                                        ⚙️ เครื่องยนต์
+                                    </Link>
+                                    <Link href="/products?category=electrical" className="block px-4 py-2 hover:bg-gray-50 rounded-lg text-sm text-gray-700 hover:text-[var(--primary)]">
+                                        ⚡️ ระบบไฟฟ้า
+                                    </Link>
+                                    <Link href="/products?category=suspension" className="block px-4 py-2 hover:bg-gray-50 rounded-lg text-sm text-gray-700 hover:text-[var(--primary)]">
+                                        🔧 ช่วงล่าง
+                                    </Link>
+                                    <Link href="/products?category=brake" className="block px-4 py-2 hover:bg-gray-50 rounded-lg text-sm text-gray-700 hover:text-[var(--primary)]">
+                                        🛑 ระบบเบรค
+                                    </Link>
+                                    <Link href="/products?category=body" className="block px-4 py-2 hover:bg-gray-50 rounded-lg text-sm text-gray-700 hover:text-[var(--primary)]">
+                                        🚗 ตัวถัง
+                                    </Link>
+                                    <Link href="/products?category=interior" className="block px-4 py-2 hover:bg-gray-50 rounded-lg text-sm text-gray-700 hover:text-[var(--primary)]">
+                                        💺 ภายใน
+                                    </Link>
+                                    <Link href="/products?category=cooling" className="block px-4 py-2 hover:bg-gray-50 rounded-lg text-sm text-gray-700 hover:text-[var(--primary)]">
+                                        ❄️ ระบบระบายความร้อน
+                                    </Link>
+                                    <Link href="/products" className="block px-4 py-2 hover:bg-gray-50 rounded-lg text-sm text-[var(--primary)] font-semibold border-t mt-1 pt-2">
+                                        ดูทั้งหมด →
+                                    </Link>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     {/* Contact Button */}

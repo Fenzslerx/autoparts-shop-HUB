@@ -98,7 +98,7 @@ export default function Footer() {
                         {/* Google Map */}
                         <div className="rounded-2xl overflow-hidden shadow-2xl h-[300px] sm:h-[400px] lg:h-full lg:min-h-[450px]">
                             <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3875.5699!2d100.5697!3d13.7273!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29ed604c5e0c7%3A0x123456789!2z4LiW4LiZ4LiZ4Lie4Lij4Liw4Lij4Liy4LihIDQ!5e0!3m2!1sth!2sth!4v1234567890"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3874.231376777901!2d100.58297947587342!3d13.825140395589782!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x30e29dd98183e34f%3A0xff5c3e0f2dfcfac8!2z4LiKLuC5guC4iuC4hOC4iuC4seC4ouC4reC4sOC5hOC4q-C4peC5iOC5gOC4geC5iOC4sg!5e0!3m2!1sen!2sth!4v1769765249592!5m2!1sen!2sth"
                                 width="100%"
                                 height="100%"
                                 style={{ border: 0 }}

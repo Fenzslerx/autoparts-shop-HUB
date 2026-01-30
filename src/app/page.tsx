@@ -5,7 +5,9 @@ import ContactSection from '@/components/ContactSection';
 import { categories, carBrands } from '@/lib/data';
 import { getProducts } from '@/lib/db';
 
+// Disable all caching
 export const dynamic = 'force-dynamic'
+export const revalidate = 0
 
 export default async function HomePage() {
   // Get featured products (first 4)

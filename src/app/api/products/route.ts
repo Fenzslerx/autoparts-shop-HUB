@@ -2,11 +2,19 @@ import { cookies } from 'next/headers'
 import { getProductsFromD1, addProductToD1 } from '@/lib/cloudflare-db'
 import { logProductAction } from '@/lib/logger'
 
+// Disable all caching
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
 
 // GET all products
 export async function GET() {
     const products = await getProductsFromD1()
-    return Response.json(products)
+    return new Response(JSON.stringify(products), {
+        headers: {
+            'Content-Type': 'application/json',
+            'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+        },
+    })
 }
 
 // POST create product

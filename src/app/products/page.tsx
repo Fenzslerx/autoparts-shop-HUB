@@ -6,7 +6,9 @@ import { getProducts } from '@/lib/db';
 import { categories, carBrands, getCategoryById } from '@/lib/data';
 import { Product } from '@/lib/types';
 
-
+// Disable all caching
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
 
 interface ProductsPageProps {
     searchParams: Promise<{
@@ -145,5 +147,3 @@ export default async function ProductsPage({ searchParams }: ProductsPageProps) 
         </div>
     );
 }
-
-export const dynamic = 'force-dynamic'

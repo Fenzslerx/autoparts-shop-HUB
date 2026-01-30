@@ -1,8 +1,13 @@
 'use client'
 
-import { useState, useRef } from "react"
+import { useState, useRef, useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { categories, carBrands } from "@/lib/data"
+
+interface Toast {
+    message: string
+    type: 'success' | 'error'
+}
 
 export default function NewProductPage() {
     const router = useRouter()
@@ -18,6 +23,7 @@ export default function NewProductPage() {
     const [images, setImages] = useState<string[]>([])
     const [imagePreviews, setImagePreviews] = useState<string[]>([])
     const [uploadingImage, setUploadingImage] = useState(false)
+    const [toast, setToast] = useState<Toast | null>(null)
 
     const [formData, setFormData] = useState({
         name: '',
@@ -28,6 +34,18 @@ export default function NewProductPage() {
         carModel: '',
         carYear: '',
     })
+
+    // Toast auto-dismiss
+    useEffect(() => {
+        if (toast) {
+            const timer = setTimeout(() => setToast(null), 3000)
+            return () => clearTimeout(timer)
+        }
+    }, [toast])
+
+    const showToast = (message: string, type: 'success' | 'error') => {
+        setToast({ message, type })
+    }
 
     const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const files = e.target.files
@@ -56,10 +74,10 @@ export default function NewProductPage() {
                 if (data.success) {
                     setImages(prev => [...prev, data.imageUrl])
                 } else {
-                    alert('อัปโหลดรูปไม่สำเร็จ')
+                    showToast('อัปโหลดรูปไม่สำเร็จ', 'error')
                 }
             } catch {
-                alert('เกิดข้อผิดพลาดในการอัปโหลด')
+                showToast('เกิดข้อผิดพลาดในการอัปโหลด', 'error')
             }
         }
 
@@ -98,14 +116,16 @@ export default function NewProductPage() {
 
             const data = await res.json() as any
             if (data.success) {
-                alert('เพิ่มสินค้าเรียบร้อยแล้ว!')
-                router.push('/admin')
-                router.refresh()
+                showToast('เพิ่มสินค้าเรียบร้อยแล้ว!', 'success')
+                setTimeout(() => {
+                    router.push('/admin/products')
+                    router.refresh()
+                }, 1500)
             } else {
-                alert('เกิดข้อผิดพลาด: ' + data.error)
+                showToast('เกิดข้อผิดพลาด: ' + (data.error || 'Unknown error'), 'error')
             }
         } catch {
-            alert('เกิดข้อผิดพลาด กรุณาลองใหม่')
+            showToast('เกิดข้อผิดพลาด กรุณาลองใหม่', 'error')
         } finally {
             setIsLoading(false)
         }
@@ -115,6 +135,25 @@ export default function NewProductPage() {
 
     return (
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            {/* Toast Notification */}
+            {toast && (
+                <div className={`fixed top-4 right-4 z-50 px-6 py-4 rounded-xl shadow-lg flex items-center gap-3 animate-slide-up ${toast.type === 'success'
+                        ? 'bg-green-500 text-white'
+                        : 'bg-red-500 text-white'
+                    }`}>
+                    {toast.type === 'success' ? (
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                    ) : (
+                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    )}
+                    <span className="font-medium">{toast.message}</span>
+                </div>
+            )}
+
             {/* Header */}
             <div className="mb-8">
                 <h1 className="text-3xl font-bold text-[var(--text-primary)]">เพิ่มสินค้าใหม่</h1>

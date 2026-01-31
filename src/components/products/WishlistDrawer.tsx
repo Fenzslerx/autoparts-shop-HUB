@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Product } from '@/lib/types'
 import { formatPrice } from '@/lib/data'
 
@@ -112,8 +113,14 @@ export default function WishlistDrawer() {
                                     <div className="space-y-3">
                                         {wishlistItems.map(product => (
                                             <div key={product.id} className="flex gap-3 p-3 bg-gray-50 rounded-xl">
-                                                <Link href={`/products/${product.id}`} onClick={() => setIsOpen(false)}>
-                                                    <img src={product.imageUrl || '/uploads/default.jpg'} alt={product.name} className="w-20 h-20 object-cover rounded-lg" />
+                                                <Link href={`/products/${product.id}`} onClick={() => setIsOpen(false)} className="relative w-20 h-20 shrink-0">
+                                                    <Image
+                                                        src={product.imageUrl || '/uploads/default.jpg'}
+                                                        alt={product.name}
+                                                        fill
+                                                        className="object-cover rounded-lg"
+                                                        sizes="80px"
+                                                    />
                                                 </Link>
                                                 <div className="flex-1 min-w-0">
                                                     <Link href={`/products/${product.id}`} onClick={() => setIsOpen(false)} className="font-medium text-[var(--text-primary)] hover:text-[var(--primary)] line-clamp-2">

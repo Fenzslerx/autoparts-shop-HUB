@@ -17,7 +17,7 @@ export default function HeroSection() {
                     <div className="animate-fade-in text-center lg:text-left">
                         <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-sm font-medium mb-8 backdrop-blur-md border border-white/10 shadow-lg">
                             <span className="w-2 h-2 rounded-full bg-[var(--secondary)] animate-pulse"></span>
-                            ช.โชคชัยรถยก รถสไลด์ อะไหร่มือสอง
+                            ช.โชคชัยรถยก รถสไลด์ อะไหล่มือสอง
                         </div>
 
                         <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 leading-tight tracking-tight">
@@ -25,11 +25,11 @@ export default function HeroSection() {
                             <span className="block text-blue-200">
                                 รถสไลด์
                             </span>
-                            <span className="text-[var(--secondary)]">อะไหร่มือสอง</span>
+                            <span className="text-[var(--secondary)]">อะไหล่มือสอง</span>
                         </h1>
 
                         <p className="text-lg md:text-xl text-blue-100/90 mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
-                            บริการรถสไลด์ อะไหร่มือสอง ราคาถูก คุณภาพดี พร้อมส่งทั่วไทย
+                            บริการรถสไลด์ อะไหล่มือสอง ราคาถูก คุณภาพดี พร้อมส่งทั่วไทย
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -65,10 +65,14 @@ export default function HeroSection() {
 
                             {/* Main Image Container */}
                             <div className="relative h-full w-full rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/20">
-                                <img
+                                <Image
                                     src="/uploads/shop-photo.jpg"
                                     alt="หน้าร้าน ช.โชคชัย"
-                                    className="w-full h-full object-cover"
+                                    fill
+                                    className="object-cover"
+                                    priority
+                                    quality={85}
+                                    sizes="(max-width: 1024px) 100vw, 50vw"
                                 />
 
                                 {/* Overlay Gradient */}
@@ -80,7 +84,7 @@ export default function HeroSection() {
                                         <span className="text-xs font-semibold text-white tracking-wider uppercase">Verified Seller</span>
                                     </div>
                                     <h3 className="text-2xl md:text-3xl font-bold text-white mb-1">ช.โชคชัยรถยก</h3>
-                                    <p className="text-white/80 font-medium text-sm md:text-base">รถสไลด์ อะไหร่มือสอง</p>
+                                    <p className="text-white/80 font-medium text-sm md:text-base">รถสไลด์ อะไหล่มือสอง</p>
                                 </div>
                             </div>
 

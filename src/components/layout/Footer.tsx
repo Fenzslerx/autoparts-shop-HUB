@@ -117,7 +117,7 @@ export default function Footer() {
                                     allowFullScreen
                                     loading="lazy"
                                     referrerPolicy="no-referrer-when-downgrade"
-                                    title="MAVARIX Location"
+                                    title="แผนที่ร้าน ช.โชคชัยรถยก"
                                     className="w-full h-full"
                                 />
                             </div>
@@ -137,7 +137,7 @@ export default function Footer() {
                         </div>
                         <div>
                             <span className="text-xl font-bold">ช.โชคชัยรถยก</span>
-                            <p className="text-gray-400 text-xs">รถสไลด์ อะไหร่มือสอง</p>
+                            <p className="text-gray-400 text-xs">รถสไลด์ อะไหล่มือสอง</p>
                         </div>
                     </Link>
 
@@ -174,7 +174,7 @@ export default function Footer() {
 
                 {/* Copyright */}
                 <div className="border-t border-gray-700 mt-6 pt-6 text-center text-sm text-gray-400">
-                    <p>© 2026 ช.โชคชัยรถยก รถสไลด์ อะไหร่มือสอง. All rights reserved.</p>
+                    <p>© 2026 ช.โชคชัยรถยก รถสไลด์ อะไหล่มือสอง. All rights reserved.</p>
                 </div>
             </div>
         </footer >

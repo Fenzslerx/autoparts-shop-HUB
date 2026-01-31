@@ -20,7 +20,7 @@ export default function Navbar() {
                                 ช.โชคชัยรถยก
                             </span>
                             <span className="text-xs text-[var(--text-secondary)] font-medium tracking-wide">
-                                รถสไลด์ อะไหร่มือสอง
+                                รถสไลด์ อะไหล่มือสอง
                             </span>
                         </div>
                     </Link>

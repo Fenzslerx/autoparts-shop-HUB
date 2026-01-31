@@ -7,8 +7,8 @@ import WhyChooseUsSection from '@/components/home/WhyChooseUsSection';
 import { getProducts } from '@/lib/db';
 
 // Disable all caching
-export const dynamic = 'force-dynamic'
-export const revalidate = 0
+// Enable caching with revalidation (every 60 seconds)
+export const revalidate = 60;
 
 export default async function HomePage() {
   // Get featured products (first 4)

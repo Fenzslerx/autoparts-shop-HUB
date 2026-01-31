@@ -94,7 +94,7 @@ export default function AdminLoginPage() {
                             ช.โชคชัยรถยก
                         </h1>
                         <p className="text-xl text-gray-300 mb-8">
-                            รถสไลด์ อะไหร่มือสอง
+                            รถสไลด์ อะไหล่มือสอง
                         </p>
 
                         {/* Stats */}
@@ -274,7 +274,7 @@ export default function AdminLoginPage() {
 
                     {/* Footer */}
                     <div className="mt-12 text-center text-sm text-[var(--text-muted)]">
-                        <p>© 2026 ช.โชคชัยรถยก รถสไลด์ อะไหร่มือสอง.</p>
+                        <p>© 2026 ช.โชคชัยรถยก รถสไลด์ อะไหล่มือสอง.</p>
                     </div>
                 </div>
             </div>

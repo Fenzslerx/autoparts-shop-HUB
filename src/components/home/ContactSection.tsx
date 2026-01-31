@@ -101,7 +101,7 @@ export default function ContactSection() {
                             allowFullScreen
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"
-                            title="MAVARIX Location"
+                            title="แผนที่ร้าน ช.โชคชัยรถยก"
                             className="w-full h-full"
                         />
                     </div>

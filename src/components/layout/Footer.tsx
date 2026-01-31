@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 
 export default function Footer() {
@@ -132,8 +133,14 @@ export default function Footer() {
                 <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
                     {/* Brand */}
                     <Link href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-                        <div className="w-10 h-10 rounded-lg bg-white flex items-center justify-center">
-                            <span className="text-[var(--primary)] font-bold text-lg">M</span>
+                        <div className="relative w-10 h-10 rounded-lg overflow-hidden border border-white/20">
+                            <Image
+                                src="/uploads/shop-photo.jpg"
+                                alt="ช.โชคชัย Logo"
+                                fill
+                                className="object-cover"
+                                sizes="40px"
+                            />
                         </div>
                         <div>
                             <span className="text-xl font-bold">ช.โชคชัยรถยก</span>

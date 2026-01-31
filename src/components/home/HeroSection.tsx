@@ -17,19 +17,19 @@ export default function HeroSection() {
                     <div className="animate-fade-in text-center lg:text-left">
                         <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 rounded-full text-sm font-medium mb-8 backdrop-blur-md border border-white/10 shadow-lg">
                             <span className="w-2 h-2 rounded-full bg-[var(--secondary)] animate-pulse"></span>
-                            ขายรถและอะไหล่มือสอง มีรถสไลด์
+                            ช.โชคชัยรถยก รถสไลด์ อะไหร่มือสอง
                         </div>
 
                         <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 leading-tight tracking-tight">
-                            ช.โชคชัย
+                            ช.โชคชัยรถยก
                             <span className="block text-blue-200">
-                                รถและอะไหล่มือสอง
+                                รถสไลด์
                             </span>
-                            <span className="text-[var(--secondary)]">มีรถสไลด์</span>
+                            <span className="text-[var(--secondary)]">อะไหร่มือสอง</span>
                         </h1>
 
                         <p className="text-lg md:text-xl text-blue-100/90 mb-10 max-w-2xl mx-auto lg:mx-0 leading-relaxed font-light">
-                            ขายรถมือสอง อะไหล่มือสอง และบริการรถสไลด์ ราคาถูก คุณภาพดี พร้อมส่งทั่วไทย
+                            บริการรถสไลด์ อะไหร่มือสอง ราคาถูก คุณภาพดี พร้อมส่งทั่วไทย
                         </p>
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -79,8 +79,8 @@ export default function HeroSection() {
                                     <div className="glass-card inline-block px-4 py-1 mb-2 rounded-full border-none bg-white/20 backdrop-blur-md">
                                         <span className="text-xs font-semibold text-white tracking-wider uppercase">Verified Seller</span>
                                     </div>
-                                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-1">ช.โชคชัย</h3>
-                                    <p className="text-white/80 font-medium text-sm md:text-base">รถและอะไหล่มือสอง มีรถสไลด์</p>
+                                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-1">ช.โชคชัยรถยก</h3>
+                                    <p className="text-white/80 font-medium text-sm md:text-base">รถสไลด์ อะไหร่มือสอง</p>
                                 </div>
                             </div>
 

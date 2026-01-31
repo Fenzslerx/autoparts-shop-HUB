@@ -8,7 +8,7 @@ export default function WhyChooseUsSection() {
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div className="text-center mb-16 max-w-2xl mx-auto">
-                    <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">Why Choose MAVARIX</span>
+                    <span className="text-[var(--primary)] font-semibold tracking-wider uppercase text-sm mb-2 block">Why Choose ช.โชคชัยรถยก</span>
                     <h2 className="text-3xl md:text-5xl font-bold text-[var(--text-primary)] mb-6">
                         ทำไมต้องเลือกเรา?
                     </h2>

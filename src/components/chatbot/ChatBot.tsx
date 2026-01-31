@@ -146,7 +146,7 @@ export default function ChatBot() {
                         <span className="text-xl">🤖</span>
                     </div>
                     <div>
-                        <h3 className="font-bold text-white text-lg">ผู้ช่วย MAVARIX</h3>
+                        <h3 className="font-bold text-white text-lg">ผู้ช่วย ช.โชคชัยรถยก</h3>
                         <p className="text-blue-100 text-xs">สอบถามเรื่องอะไหล่ได้ 24 ชม.</p>
                     </div>
                 </div>

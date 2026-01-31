@@ -136,8 +136,8 @@ export default function Footer() {
                             <span className="text-[var(--primary)] font-bold text-lg">M</span>
                         </div>
                         <div>
-                            <span className="text-xl font-bold">ช.โชคชัย</span>
-                            <p className="text-gray-400 text-xs">รถและอะไหล่มือสอง มีรถสไลด์</p>
+                            <span className="text-xl font-bold">ช.โชคชัยรถยก</span>
+                            <p className="text-gray-400 text-xs">รถสไลด์ อะไหร่มือสอง</p>
                         </div>
                     </Link>
 
@@ -174,7 +174,7 @@ export default function Footer() {
 
                 {/* Copyright */}
                 <div className="border-t border-gray-700 mt-6 pt-6 text-center text-sm text-gray-400">
-                    <p>© 2026 ช.โชคชัย รถและอะไหล่มือสอง. All rights reserved.</p>
+                    <p>© 2026 ช.โชคชัยรถยก รถสไลด์ อะไหร่มือสอง. All rights reserved.</p>
                 </div>
             </div>
         </footer >

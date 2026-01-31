@@ -17,10 +17,10 @@ export default function Navbar() {
                         </div>
                         <div className="flex flex-col">
                             <span className="text-xl font-bold text-[var(--primary)] leading-none group-hover:text-blue-700 transition-colors">
-                                ช.โชคชัย
+                                ช.โชคชัยรถยก
                             </span>
                             <span className="text-xs text-[var(--text-secondary)] font-medium tracking-wide">
-                                รถและอะไหล่มือสอง มีรถสไลด์
+                                รถสไลด์ อะไหร่มือสอง
                             </span>
                         </div>
                     </Link>

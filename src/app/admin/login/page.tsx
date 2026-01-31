@@ -91,10 +91,10 @@ export default function AdminLoginPage() {
                         </div>
 
                         <h1 className="text-4xl font-bold mb-4">
-                            ช.โชคชัย
+                            ช.โชคชัยรถยก
                         </h1>
                         <p className="text-xl text-gray-300 mb-8">
-                            ขายรถและอะไหล่มือสอง มีรถสไลด์
+                            รถสไลด์ อะไหร่มือสอง
                         </p>
 
                         {/* Stats */}
@@ -133,7 +133,7 @@ export default function AdminLoginPage() {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
                             </svg>
                         </div>
-                        <h1 className="text-2xl font-bold text-[var(--text-primary)]">ช.โชคชัย</h1>
+                        <h1 className="text-2xl font-bold text-[var(--text-primary)]">ช.โชคชัยรถยก</h1>
                     </div>
 
                     {/* Welcome Text */}
@@ -274,7 +274,7 @@ export default function AdminLoginPage() {
 
                     {/* Footer */}
                     <div className="mt-12 text-center text-sm text-[var(--text-muted)]">
-                        <p>© 2026 ช.โชคชัย รถและอะไหล่มือสอง.</p>
+                        <p>© 2026 ช.โชคชัยรถยก รถสไลด์ อะไหร่มือสอง.</p>
                     </div>
                 </div>
             </div>

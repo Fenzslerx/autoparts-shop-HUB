@@ -16,7 +16,7 @@ export default async function HomePage() {
   const featuredProducts = allProducts.slice(0, 4);
 
   return (
-    <div className="min-h-screen bg-[var(--background)]">
+    <div className="bg-[var(--background)]">
       {/* Hero Section */}
       <HeroSection />
 

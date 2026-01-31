@@ -34,7 +34,7 @@ export default function RootLayout({
     <html lang="th" className={inter.variable}>
       <body className="antialiased min-h-screen flex flex-col">
         <Navbar />
-        <main className="flex-grow pt-16">
+        <main className="flex-grow pt-16 overflow-hidden">
           {children}
         </main>
         <Footer />

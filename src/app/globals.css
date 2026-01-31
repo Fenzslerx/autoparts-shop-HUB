@@ -35,12 +35,22 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  background-color: var(--text-primary);
+  /* Matches footer color to hide bottom overscroll/whitespace */
+}
+
 body {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   background-color: var(--background);
+  /* Main content background */
   color: var(--text-primary);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  /* Prevent horizontal scroll */
+  width: 100%;
 }
 
 /* Custom scrollbar */

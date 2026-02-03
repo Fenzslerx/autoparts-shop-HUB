@@ -57,6 +57,7 @@ export default function HeroSection() {
                         </div>
                     </div>
 
+
                     {/* Content Right (Image) - Shows SECOND on mobile */}
                     <div className="relative animate-slide-up mt-8 lg:mt-0">
                         <div className="relative w-full aspect-[4/3] lg:aspect-square max-w-lg mx-auto transform hover:scale-[1.02] transition-transform duration-500">

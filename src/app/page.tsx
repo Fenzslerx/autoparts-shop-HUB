@@ -3,6 +3,7 @@ import ProductCard from '@/components/products/ProductCard';
 import HomeSearch from '@/components/home/HomeSearch';
 import HeroSection from '@/components/home/HeroSection';
 import WhyChooseUsSection from '@/components/home/WhyChooseUsSection';
+import BuyCarWreckSection from '@/components/home/BuyCarWreckSection';
 
 import { getProducts } from '@/lib/db';
 
@@ -67,6 +68,9 @@ export default async function HomePage() {
           </div>
         </div>
       </section>
+
+      {/* Buy Car Wreck Section */}
+      <BuyCarWreckSection />
 
       {/* Why Choose Us */}
       <WhyChooseUsSection />

@@ -52,16 +52,16 @@ export default async function HomePage() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 lg:gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-6 lg:gap-8">
             {featuredProducts.map((product) => (
               <ProductCard key={product.id} product={product} />
             ))}
           </div>
 
-          <div className="text-center mt-12 md:hidden">
+          <div className="text-center mt-8 md:mt-12 md:hidden">
             <Link
               href="/products"
-              className="btn-primary w-full sm:w-auto"
+              className="btn-primary w-full text-sm py-3"
             >
               ดูสินค้าทั้งหมด
             </Link>

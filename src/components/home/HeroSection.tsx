@@ -10,8 +10,8 @@ export default function HeroSection() {
                 <div className="absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-indigo-600 rounded-full blur-[120px] mix-blend-screen animate-float" style={{ animationDelay: '2s' }}></div>
             </div>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-24">
-                <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-24">
+                <div className="grid lg:grid-cols-2 gap-8 lg:gap-20 items-center">
 
                     {/* Content Left (Text) - Shows FIRST on mobile now */}
                     <div className="animate-fade-in text-center lg:text-left">
@@ -60,7 +60,7 @@ export default function HeroSection() {
 
                     {/* Content Right (Buy Wreck Promo) - Shows SECOND on mobile */}
                     <div className="relative animate-slide-up mt-8 lg:mt-0">
-                        <Link href="/services/buy-wreck" className="block relative w-full aspect-[4/3] lg:aspect-square max-w-lg mx-auto transform hover:scale-[1.02] transition-transform duration-500 group cursor-pointer">
+                        <Link href="/services/buy-wreck" className="block relative w-full aspect-[4/5] lg:aspect-square max-w-lg mx-auto transform hover:scale-[1.02] transition-transform duration-500 group cursor-pointer">
                             {/* Animated Glow Backing */}
                             <div className="absolute inset-0 bg-gradient-to-br from-yellow-400 to-orange-600 rounded-[2rem] rotate-3 blur-md opacity-70 group-hover:opacity-100 group-hover:blur-xl transition-all duration-500 animate-pulse"></div>
 
@@ -89,9 +89,6 @@ export default function HeroSection() {
                                         </div>
                                         <div className="flex items-center gap-2 text-gray-200">
                                             <span className="text-green-400">✓</span> จอดทิ้งนาน
-                                        </div>
-                                        <div className="flex items-center gap-2 text-gray-200">
-                                            <span className="text-green-400">✓</span> เครื่องพัง
                                         </div>
                                     </div>
 

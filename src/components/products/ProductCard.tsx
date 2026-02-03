@@ -55,11 +55,11 @@ export default function ProductCard({ product }: ProductCardProps) {
             </div>
 
             {/* Content */}
-            <div className="p-4 flex flex-col flex-1">
-                <Link href={`/products/${product.id}`} className="flex-1 space-y-3">
+            <div className="p-3 md:p-4 flex flex-col flex-1">
+                <Link href={`/products/${product.id}`} className="flex-1 space-y-2 md:space-y-3">
                     {/* Car Info */}
-                    <div className="flex items-center gap-1.5 text-xs text-gray-500 font-medium">
-                        <span className="px-1.5 py-0.5 rounded bg-blue-50 text-blue-600">
+                    <div className="flex items-center gap-1.5 text-[10px] md:text-xs text-gray-500 font-medium">
+                        <span className="px-1.5 py-0.5 rounded bg-blue-50 text-blue-600 truncate max-w-[80px]">
                             {product.carModel}
                         </span>
                         <span className="text-gray-300">•</span>
@@ -67,19 +67,19 @@ export default function ProductCard({ product }: ProductCardProps) {
                     </div>
 
                     {/* Title */}
-                    <h3 className="font-bold text-gray-900 text-lg leading-snug line-clamp-2 group-hover:text-[var(--primary)] transition-colors min-h-[3.25rem]">
+                    <h3 className="font-bold text-gray-900 text-sm md:text-lg leading-snug line-clamp-2 group-hover:text-[var(--primary)] transition-colors min-h-[2.5rem] md:min-h-[3.25rem]">
                         {product.name}
                     </h3>
 
                     {/* Price & Action */}
                     <div className="flex items-end justify-between pt-2 mt-auto border-t border-gray-50">
                         <div className="flex flex-col w-full">
-                            <span className="text-xs text-gray-400 font-medium mb-0.5">ราคา</span>
-                            <div className="flex items-center justify-between w-full">
-                                <span className="text-xl md:text-2xl font-bold text-[var(--primary)] tracking-tight">
+                            <span className="text-[10px] md:text-xs text-gray-400 font-medium mb-0.5">ราคา</span>
+                            <div className="flex items-center justify-between w-full gap-2">
+                                <span className="text-lg md:text-2xl font-bold text-[var(--primary)] tracking-tight">
                                     {formatPrice(product.price)}
                                 </span>
-                                <span className="text-xs font-semibold text-blue-600 bg-blue-50 px-2 py-1 rounded-lg group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                <span className="text-[10px] md:text-xs font-semibold text-blue-600 bg-blue-50 px-2 py-1 rounded-md whitespace-nowrap group-hover:bg-blue-600 group-hover:text-white transition-colors">
                                     ดูรายละเอียด
                                 </span>
                             </div>

@@ -109,7 +109,7 @@ export default function Navbar() {
                             <span className="px-2 py-0.5 bg-white/20 rounded-full text-xs">ช่องทางหลัก</span>
                         </Link>
                         <Link
-                            href="https://line.me/ti/p/~0890071802"
+                            href="https://line.me/ti/p/~0972549395"
                             target="_blank"
                             className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#06C755] text-white font-bold hover:bg-[#05B04A] transition-all hover:scale-105 shadow-lg shadow-green-500/20"
                         >
@@ -186,7 +186,7 @@ export default function Navbar() {
 
                         {/* Mobile Actions */}
                         <Link
-                            href="https://line.me/ti/p/~0890071802"
+                            href="https://line.me/ti/p/~0972549395"
                             target="_blank"
                             className="flex items-center justify-center gap-2 px-4 py-3 rounded-xl bg-[#06C755] text-white font-bold shadow-lg shadow-green-500/30 active:scale-95 transition-transform"
                             onClick={() => setIsMenuOpen(false)}

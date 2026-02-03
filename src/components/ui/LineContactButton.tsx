@@ -13,7 +13,7 @@ export default function LineContactButton({
     productName,
     productId,
     price,
-    lineId = '0890071802',
+    lineId = '0972549395',
     size = 'lg',
     fullWidth = false
 }: LineContactButtonProps) {

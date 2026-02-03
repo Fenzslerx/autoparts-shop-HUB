@@ -59,7 +59,7 @@ export default function WishlistDrawer() {
         const total = wishlistItems.reduce((sum, p) => sum + p.price, 0)
         const message = `📋 รายการสินค้าที่สนใจ:\n\n${items}\n\n💰 รวม: ${formatPrice(total)}\n\nสนใจสอบถามรายละเอียดเพิ่มเติมครับ`
         const encoded = encodeURIComponent(message)
-        window.open(`https://line.me/ti/p/~0890071802?${encoded}`, '_blank')
+        window.open(`https://line.me/ti/p/~0972549395?${encoded}`, '_blank')
     }
 
     return (

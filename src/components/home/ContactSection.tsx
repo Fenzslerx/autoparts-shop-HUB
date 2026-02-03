@@ -19,7 +19,7 @@ export default function ContactSection() {
                         <div className="space-y-6">
                             {/* LINE */}
                             <a
-                                href="https://line.me/ti/p/~0890071802"
+                                href="https://line.me/ti/p/~0972549395"
                                 target="_blank"
                                 className="flex items-center gap-4 p-4 bg-white rounded-xl hover:shadow-md transition-all group"
                             >
@@ -30,7 +30,7 @@ export default function ContactSection() {
                                 </div>
                                 <div>
                                     <p className="font-semibold text-[var(--text-primary)]">LINE Official</p>
-                                    <p className="text-[var(--line-green)]">0890071802</p>
+                                    <p className="text-[var(--line-green)]">0972549395</p>
                                 </div>
                             </a>
 
@@ -43,7 +43,7 @@ export default function ContactSection() {
                                 </div>
                                 <div>
                                     <p className="font-semibold text-[var(--text-primary)]">โทรศัพท์</p>
-                                    <p className="text-[var(--text-secondary)]">089-007-1802</p>
+                                    <p className="text-[var(--text-secondary)]">097-254-9395</p>
                                 </div>
                             </div>
 

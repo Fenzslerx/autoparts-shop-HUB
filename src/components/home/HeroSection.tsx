@@ -45,7 +45,7 @@ export default function HeroSection() {
                                 <span className="px-2 py-0.5 bg-blue-100 text-blue-600 rounded-full text-xs font-semibold">ช่องทางหลัก</span>
                             </a>
                             <a
-                                href="https://line.me/ti/p/~0890071802"
+                                href="https://line.me/ti/p/~0972549395"
                                 target="_blank"
                                 className="btn-line shadow-lg shadow-green-900/20"
                             >

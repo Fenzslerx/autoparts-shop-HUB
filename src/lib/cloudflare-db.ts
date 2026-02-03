@@ -78,8 +78,16 @@ export async function executeD1Query(sql: string, params: any[] = []): Promise<a
 }
 
 // Get all products
-export async function getProductsFromD1(): Promise<Product[]> {
-    const results = await executeD1Query('SELECT * FROM products WHERE is_active = 1 ORDER BY created_at DESC');
+export async function getProductsFromD1(options: { includeInactive?: boolean } = {}): Promise<Product[]> {
+    let sql = 'SELECT * FROM products WHERE (is_deleted IS NULL OR is_deleted = 0)';
+
+    if (!options.includeInactive) {
+        sql += ' AND is_active = 1';
+    }
+
+    sql += ' ORDER BY created_at DESC';
+
+    const results = await executeD1Query(sql);
 
     // Map database columns to Product interface
     return results.map((row: any) => ({
@@ -102,7 +110,7 @@ export async function getProductsFromD1(): Promise<Product[]> {
 
 // Get single product by ID
 export async function getProductByIdFromD1(id: string): Promise<Product | null> {
-    const results = await executeD1Query('SELECT * FROM products WHERE id = ?', [id]);
+    const results = await executeD1Query('SELECT * FROM products WHERE id = ? AND (is_deleted IS NULL OR is_deleted = 0)', [id]);
 
     if (results.length === 0) return null;
 
@@ -131,8 +139,8 @@ export async function addProductToD1(product: any): Promise<Product> {
     const now = new Date().toISOString();
 
     await executeD1Query(
-        `INSERT INTO products (id, name, description, price, car_brand, car_model, car_year, category, image_url, images, stock, is_active, created_at, updated_at)
-         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, ?, ?)`,
+        `INSERT INTO products (id, name, description, price, car_brand, car_model, car_year, category, image_url, images, stock, is_active, is_deleted, created_at, updated_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1, 0, ?, ?)`,
         [
             id,
             product.name,
@@ -192,6 +200,8 @@ export async function updateProductInD1(id: string, product: Partial<Product>): 
 
 // Delete product
 export async function deleteProductFromD1(id: string): Promise<boolean> {
-    await executeD1Query('UPDATE products SET is_active = 0 WHERE id = ?', [id]);
+    // Hard delete logic: set is_deleted = 1
+    // Also set is_active = 0 to be safe
+    await executeD1Query('UPDATE products SET is_deleted = 1, is_active = 0 WHERE id = ?', [id]);
     return true;
 }

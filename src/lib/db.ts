@@ -10,10 +10,13 @@ import {
 // Adapter function to make D1 behave like the old JSON db
 // This prevents breaking changes in other files
 
-export async function getProducts(): Promise<Product[]> {
+// Adapter function to make D1 behave like the old JSON db
+// This prevents breaking changes in other files
+
+export async function getProducts(options?: { includeInactive?: boolean }): Promise<Product[]> {
     try {
         // getProductsFromD1 already returns camelCase mapped data
-        const products = await getProductsFromD1()
+        const products = await getProductsFromD1(options)
         return products
     } catch (error) {
         console.error('Error fetching products from D1:', error)
@@ -48,9 +51,8 @@ export async function updateProduct(id: string, updates: Partial<Product>): Prom
 }
 
 export async function deleteProduct(id: string): Promise<boolean> {
-    // Soft delete - just mark as inactive
-    await executeD1Query('UPDATE products SET is_active = 0 WHERE id = ?', [id])
-    return true
+    const { deleteProductFromD1 } = await import('./cloudflare-db');
+    return await deleteProductFromD1(id);
 }
 
 // Deprecated: No-op for D1

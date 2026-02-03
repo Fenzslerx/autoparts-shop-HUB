@@ -12,34 +12,34 @@ export default function BuyWreckPage() {
                     <div className="absolute inset-0 bg-black/50"></div>
                 </div>
 
-                <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-                    <span className="inline-block py-2 px-4 rounded-full bg-yellow-500/20 text-yellow-400 text-sm font-bold mb-4 border border-yellow-500/30 backdrop-blur-md">
+                <div className="relative z-10 text-center px-4 max-w-4xl mx-auto flex flex-col items-center justify-center h-full pt-16 md:pt-0">
+                    <span className="inline-block py-1.5 px-4 rounded-full bg-yellow-500/20 text-yellow-400 text-xs md:text-sm font-bold mb-4 border border-yellow-500/30 backdrop-blur-md">
                         รับซื้อซากรถทุกสภาพ
                     </span>
-                    <h1 className="text-3xl md:text-6xl font-bold text-white mb-6 leading-tight">
-                        เปลี่ยนซากรถเป็นเงินสด <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">ให้ราคาดีที่สุด</span>
+                    <h1 className="text-2xl sm:text-3xl md:text-6xl font-bold text-white mb-4 md:mb-6 leading-tight">
+                        เปลี่ยนซากรถเป็นเงินสด <br className="hidden md:block" />
+                        <span className="block md:inline mt-2 md:mt-0 text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">ให้ราคาดีที่สุด</span>
                     </h1>
-                    <p className="text-gray-300 text-lg md:text-xl mb-8 max-w-2xl mx-auto">
-                        รับซื้อรถเก่า รถเสีย รถชน รถจอดนาน ทุกสภาพ ไม่จำกัดรุ่น ยี่ห้อ <br className="hidden md:block" />
+                    <p className="text-gray-300 text-sm md:text-xl mb-6 md:mb-8 max-w-2xl mx-auto px-4">
+                        รับซื้อรถเก่า รถเสีย รถชน รถจอดนาน ทุกสภาพ <br className="hidden md:block" />
                         ประเมินราคาฟรี จ่ายเงินสดหน้างาน พร้อมบริการยกรถฟรีทั่วไทย
                     </p>
-                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                    <div className="flex flex-col w-full sm:w-auto sm:flex-row gap-3 sm:gap-4 justify-center px-4">
                         <a
                             href="https://line.me/ti/p/~0972549395"
                             target="_blank"
-                            className="btn-primary bg-[#06C755] hover:bg-[#05B04A] text-white border-none shadow-lg shadow-green-500/30 text-lg px-8 py-4"
+                            className="btn-primary bg-[#06C755] hover:bg-[#05B04A] text-white border-none shadow-lg shadow-green-500/30 text-base md:text-lg px-6 py-3 w-full sm:w-auto flex items-center justify-center"
                         >
-                            <svg className="w-6 h-6 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                            <svg className="w-5 h-5 md:w-6 md:h-6 mr-2" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" />
                             </svg>
                             ประเมินราคาฟรีทางไลน์
                         </a>
                         <a
                             href="tel:0972549395"
-                            className="btn-primary bg-white text-gray-900 hover:bg-gray-100 hover:text-black border-none text-lg px-8 py-4"
+                            className="btn-primary bg-white text-gray-900 hover:bg-gray-100 hover:text-black border-none text-base md:text-lg px-6 py-3 w-full sm:w-auto flex items-center justify-center"
                         >
-                            <svg className="w-6 h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <svg className="w-5 h-5 md:w-6 md:h-6 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                             </svg>
                             โทร 097-254-9395
@@ -123,13 +123,13 @@ export default function BuyWreckPage() {
                 </div>
                 <div className="relative z-10 max-w-4xl mx-auto px-4">
                     <h2 className="text-3xl md:text-5xl font-bold mb-8">อย่าปล่อยให้รถเก่าไร้ค่า เปลี่ยนเป็นเงินก้อนวันนี้!</h2>
-                    <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                    <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center w-full sm:w-auto">
                         <a
                             href="https://line.me/ti/p/~0972549395"
                             target="_blank"
-                            className="flex items-center justify-center gap-3 px-8 py-4 bg-[#06C755] hover:bg-[#05B04A] text-white rounded-2xl font-bold text-xl shadow-lg shadow-green-500/30 hover:scale-105 transition-all w-full sm:w-auto"
+                            className="flex items-center justify-center gap-3 px-6 py-4 bg-[#06C755] hover:bg-[#05B04A] text-white rounded-2xl font-bold text-lg md:text-xl shadow-lg shadow-green-500/30 hover:scale-105 transition-all w-full sm:w-auto"
                         >
-                            <svg className="w-8 h-8" viewBox="0 0 24 24" fill="currentColor">
+                            <svg className="w-6 h-6 md:w-8 md:h-8" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M19.365 9.863c.349 0 .63.285.63.631 0 .345-.281.63-.63.63H17.61v1.125h1.755c.349 0 .63.283.63.63 0 .344-.281.629-.63.629h-2.386c-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63h2.386c.349 0 .63.285.63.63 0 .349-.281.63-.63.63H17.61v1.125h1.755zm-3.855 3.016c0 .27-.174.51-.432.596-.064.021-.133.031-.199.031-.211 0-.391-.09-.51-.25l-2.443-3.317v2.94c0 .344-.279.629-.631.629-.346 0-.626-.285-.626-.629V8.108c0-.27.173-.51.43-.595.06-.023.136-.033.194-.033.195 0 .375.104.495.254l2.462 3.33V8.108c0-.345.282-.63.63-.63.345 0 .63.285.63.63v4.771zm-5.741 0c0 .344-.282.629-.631.629-.345 0-.627-.285-.627-.629V8.108c0-.345.282-.63.627-.63.349 0 .631.285.631.63v4.771zm-2.466.629H4.917c-.345 0-.63-.285-.63-.629V8.108c0-.345.285-.63.63-.63.348 0 .63.285.63.63v4.141h1.756c.348 0 .629.283.629.63 0 .344-.281.629-.629.629M24 10.314C24 4.943 18.615.572 12 .572S0 4.943 0 10.314c0 4.811 4.27 8.842 10.035 9.608.391.082.923.258 1.058.59.12.301.079.766.038 1.08l-.164 1.02c-.045.301-.24 1.186 1.049.645 1.291-.539 6.916-4.078 9.436-6.975C23.176 14.393 24 12.458 24 10.314" />
                             </svg>
                             <span>ทักไลน์ประเมินราคา</span>

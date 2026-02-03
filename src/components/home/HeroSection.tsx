@@ -78,7 +78,7 @@ export default function HeroSection() {
                                         </span>
                                     </div>
 
-                                    <h3 className="text-3xl md:text-4xl font-extrabold text-white mb-2 drop-shadow-lg">
+                                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white mb-2 drop-shadow-lg leading-tight">
                                         รับซื้อซากรถ
                                         <span className="block text-yellow-400">ให้ราคาดีที่สุด!</span>
                                     </h3>

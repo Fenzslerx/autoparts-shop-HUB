@@ -65,7 +65,7 @@ export default function BuyCarWreckSection() {
                                     <div className="bg-white/5 p-3 lg:p-4 rounded-xl text-center">
                                         <div className="text-2xl lg:text-3xl mb-2">💥</div>
                                         <div className="font-semibold text-white text-sm lg:text-base">รถชนหนัก</div>
-                                        <div className="text-[10px] lg:text-xs text-green-400">ให้ราคาสูง</div>
+                                        <div className="text-[10px] lg:text-xs text-green-400">ให้ราคาดีที่สุด</div>
                                     </div>
                                     <div className="bg-white/5 p-3 lg:p-4 rounded-xl text-center">
                                         <div className="text-2xl lg:text-3xl mb-2">🅿️</div>

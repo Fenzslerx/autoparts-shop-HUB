@@ -58,44 +58,54 @@ export default function HeroSection() {
                     </div>
 
 
-                    {/* Content Right (Image) - Shows SECOND on mobile */}
+                    {/* Content Right (Buy Wreck Promo) - Shows SECOND on mobile */}
                     <div className="relative animate-slide-up mt-8 lg:mt-0">
-                        <div className="relative w-full aspect-[4/3] lg:aspect-square max-w-lg mx-auto transform hover:scale-[1.02] transition-transform duration-500">
-                            {/* Glassmorphic Backing */}
-                            <div className="absolute inset-0 bg-white/10 rounded-[2rem] rotate-3 blur-sm"></div>
+                        <Link href="/services/buy-wreck" className="block relative w-full aspect-[4/3] lg:aspect-square max-w-lg mx-auto transform hover:scale-[1.02] transition-transform duration-500 group cursor-pointer">
+                            {/* Animated Glow Backing */}
+                            <div className="absolute inset-0 bg-gradient-to-br from-yellow-400 to-orange-600 rounded-[2rem] rotate-3 blur-md opacity-70 group-hover:opacity-100 group-hover:blur-xl transition-all duration-500 animate-pulse"></div>
 
-                            {/* Main Image Container */}
-                            <div className="relative h-full w-full rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/20">
-                                <Image
-                                    src="/uploads/shop-photo.jpg"
-                                    alt="หน้าร้าน ช.โชคชัย"
-                                    fill
-                                    className="object-cover"
-                                    priority
-                                    quality={85}
-                                    sizes="(max-width: 1024px) 100vw, 50vw"
-                                />
+                            {/* Main Card Container */}
+                            <div className="relative h-full w-full rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white/20 bg-gray-900 group-hover:border-yellow-400/50 transition-colors">
+                                {/* Background Image/Gradient */}
+                                <div className="absolute inset-0 bg-[url('/images/buy-wreck-promo.jpg')] bg-cover bg-center group-hover:scale-105 transition-transform duration-700"></div>
+                                <div className="absolute inset-0 bg-black/50"></div>
 
-                                {/* Overlay Gradient */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
-
-                                {/* Shop Info Overlay */}
-                                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8 text-left">
-                                    <div className="glass-card inline-block px-4 py-1 mb-2 rounded-full border-none bg-white/20 backdrop-blur-md">
-                                        <span className="text-xs font-semibold text-white tracking-wider uppercase">Verified Seller</span>
+                                {/* Content Overlay */}
+                                <div className="absolute inset-0 flex flex-col justify-end p-6 md:p-8">
+                                    <div className="mb-auto">
+                                        <span className="inline-block px-3 py-1 bg-red-600 text-white text-xs font-bold rounded-full animate-bounce shadow-lg">
+                                            🔥 HOT DEAL
+                                        </span>
                                     </div>
-                                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-1">ช.โชคชัยรถยก</h3>
-                                    <p className="text-white/80 font-medium text-sm md:text-base">รถสไลด์ อะไหล่มือสอง</p>
+
+                                    <h3 className="text-3xl md:text-4xl font-extrabold text-white mb-2 drop-shadow-lg">
+                                        รับซื้อซากรถ
+                                        <span className="block text-yellow-400">ให้ราคาดีที่สุด!</span>
+                                    </h3>
+
+                                    <div className="space-y-2 mb-6">
+                                        <div className="flex items-center gap-2 text-gray-200">
+                                            <span className="text-green-400">✓</span> รถชนหนัก
+                                        </div>
+                                        <div className="flex items-center gap-2 text-gray-200">
+                                            <span className="text-green-400">✓</span> จอดทิ้งนาน
+                                        </div>
+                                        <div className="flex items-center gap-2 text-gray-200">
+                                            <span className="text-green-400">✓</span> เครื่องพัง
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-center justify-between bg-white/10 backdrop-blur-md p-3 rounded-xl border border-white/10 group-hover:bg-white/20 transition-colors">
+                                        <span className="text-sm font-semibold text-white">คลิกเพื่อประเมินราคา</span>
+                                        <div className="w-8 h-8 rounded-full bg-yellow-500 flex items-center justify-center text-black group-hover:translate-x-1 transition-transform">
+                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                            </svg>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-
-                            {/* Floating Elements */}
-                            <div className="absolute -top-6 -right-6 w-24 h-24 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center shadow-lg animate-bounce hidden sm:flex">
-                                <span className="text-white font-bold text-center text-xs leading-none transform -rotate-12">
-                                    ของดี<br />ราคาถูก<br /><span className="text-lg">💰</span>
-                                </span>
-                            </div>
-                        </div>
+                        </Link>
                     </div>
 
                 </div>

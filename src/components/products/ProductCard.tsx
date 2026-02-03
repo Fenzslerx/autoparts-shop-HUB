@@ -13,80 +13,81 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
     return (
-        <article className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 card-hover border border-[var(--border)] relative">
-            <Link href={`/products/${product.id}`}>
+        <article className="group bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 border border-gray-100 relative h-full flex flex-col">
+            <Link href={`/products/${product.id}`} className="block relative aspect-[4/3] overflow-hidden bg-gray-50">
                 {/* Image */}
-                <div className="relative aspect-[4/3] overflow-hidden bg-gray-100">
-                    <Image
-                        src={product.imageUrl || 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=400&h=300&fit=crop'}
-                        alt={product.name}
-                        fill
-                        className="object-cover group-hover:scale-110 transition-transform duration-500"
-                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                        quality={75}
-                        loading="lazy"
-                    />
-                    {/* Category Badge */}
-                    <div className="absolute top-3 left-3">
-                        <span className="badge badge-primary backdrop-blur-sm bg-white/90">
-                            {product.carBrand}
-                        </span>
-                    </div>
-                    {/* Stock Badge */}
-                    <div className="absolute top-3 right-12">
-                        <StockBadge stock={product.stock} />
-                    </div>
-                    {/* Out of stock overlay */}
-                    {product.stock === 0 && (
-                        <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-                            <span className="bg-red-500 text-white px-4 py-2 rounded-full font-bold">สินค้าหมด</span>
-                        </div>
-                    )}
+                <Image
+                    src={product.imageUrl || 'https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=400&h=300&fit=crop'}
+                    alt={product.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    quality={85}
+                    loading="lazy"
+                />
+
+                {/* Gradient Overlay for text contrast if needed */}
+                <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+
+                {/* Category Badge */}
+                <div className="absolute top-3 left-3 z-10">
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-white/90 backdrop-blur-sm text-gray-800 shadow-sm border border-gray-100">
+                        {product.carBrand}
+                    </span>
                 </div>
+
+                {/* Stock Badge */}
+                <div className="absolute top-3 right-12 z-10">
+                    <StockBadge stock={product.stock} />
+                </div>
+
+                {/* Out of stock overlay */}
+                {product.stock === 0 && (
+                    <div className="absolute inset-0 bg-white/60 backdrop-blur-[1px] flex items-center justify-center z-20">
+                        <span className="bg-red-500 text-white px-4 py-1.5 rounded-full font-bold text-sm shadow-lg transform -rotate-6">สินค้าหมด</span>
+                    </div>
+                )}
             </Link>
 
-            {/* Wishlist Button - positioned absolutely */}
-            <div className="absolute top-3 right-3 z-10">
+            {/* Wishlist Button */}
+            <div className="absolute top-3 right-3 z-20 hover:scale-110 transition-transform">
                 <WishlistButton productId={product.id} productName={product.name} size="sm" />
             </div>
 
             {/* Content */}
-            <Link href={`/products/${product.id}`}>
-                <div className="p-5">
+            <div className="p-4 flex flex-col flex-1">
+                <Link href={`/products/${product.id}`} className="flex-1 space-y-3">
                     {/* Car Info */}
-                    <div className="flex items-center gap-2 text-sm text-[var(--text-secondary)] mb-2">
-                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <span>{product.carModel} | {product.carYear}</span>
+                    <div className="flex items-center gap-1.5 text-xs text-gray-500 font-medium">
+                        <span className="px-1.5 py-0.5 rounded bg-blue-50 text-blue-600">
+                            {product.carModel}
+                        </span>
+                        <span className="text-gray-300">•</span>
+                        <span>{product.carYear}</span>
                     </div>
 
                     {/* Title */}
-                    <h3 className="font-bold text-lg text-[var(--text-primary)] mb-2 line-clamp-2 group-hover:text-[var(--primary)] transition-colors">
+                    <h3 className="font-bold text-gray-900 text-lg leading-snug line-clamp-2 group-hover:text-[var(--primary)] transition-colors min-h-[3.25rem]">
                         {product.name}
                     </h3>
 
-                    {/* Description */}
-                    <p className="text-sm text-[var(--text-secondary)] line-clamp-2 mb-4">
-                        {product.description}
-                    </p>
-
                     {/* Price & Action */}
-                    <div className="flex items-center justify-between">
-                        <div>
-                            <span className="text-2xl font-bold text-[var(--primary)]">
-                                {formatPrice(product.price)}
-                            </span>
+                    <div className="flex items-end justify-between pt-2 mt-auto border-t border-gray-50">
+                        <div className="flex flex-col w-full">
+                            <span className="text-xs text-gray-400 font-medium mb-0.5">ราคา</span>
+                            <div className="flex items-center justify-between w-full">
+                                <span className="text-xl md:text-2xl font-bold text-[var(--primary)] tracking-tight">
+                                    {formatPrice(product.price)}
+                                </span>
+                                <span className="text-xs font-semibold text-blue-600 bg-blue-50 px-2 py-1 rounded-lg group-hover:bg-blue-600 group-hover:text-white transition-colors">
+                                    ดูรายละเอียด
+                                </span>
+                            </div>
                         </div>
-                        <div className="flex items-center gap-2 text-[var(--line-green)] font-semibold text-sm">
-                            <span>ดูรายละเอียด</span>
-                            <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                            </svg>
-                        </div>
+
                     </div>
-                </div>
-            </Link>
+                </Link>
+            </div>
         </article>
     );
 }

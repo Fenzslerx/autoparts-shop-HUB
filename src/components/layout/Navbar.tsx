@@ -137,10 +137,10 @@ export default function Navbar() {
 
                 {/* Mobile Navigation Menu */}
                 <div className={`
-                    lg:hidden fixed inset-x-0 top-16 bg-white/95 backdrop-blur-xl border-t border-gray-100 shadow-2xl transition-all duration-300 ease-in-out transform origin-top
+                    lg:hidden fixed inset-x-0 top-16 bg-white/95 backdrop-blur-2xl border-t border-gray-100 shadow-2xl transition-all duration-300 ease-in-out transform origin-top
                     ${isMenuOpen ? 'opacity-100 scale-y-100 visible' : 'opacity-0 scale-y-95 invisible'}
                 `}>
-                    <div className="container mx-auto px-4 py-6 flex flex-col gap-2 max-h-[85vh] overflow-y-auto">
+                    <div className="container mx-auto px-4 py-8 flex flex-col gap-3 max-h-[85vh] overflow-y-auto">
                         <Link
                             href="/"
                             className="flex items-center gap-3 px-4 py-3 rounded-xl hover:bg-blue-50 text-gray-700 hover:text-[var(--primary)] font-medium transition-colors"

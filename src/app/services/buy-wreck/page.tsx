@@ -16,7 +16,7 @@ export default function BuyWreckPage() {
                     <span className="inline-block py-2 px-4 rounded-full bg-yellow-500/20 text-yellow-400 text-sm font-bold mb-4 border border-yellow-500/30 backdrop-blur-md">
                         รับซื้อซากรถทุกสภาพ
                     </span>
-                    <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                    <h1 className="text-3xl md:text-6xl font-bold text-white mb-6 leading-tight">
                         เปลี่ยนซากรถเป็นเงินสด <br />
                         <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-500">ให้ราคาดีที่สุด</span>
                     </h1>
@@ -49,7 +49,7 @@ export default function BuyWreckPage() {
             </section>
 
             {/* Features Grid */}
-            <section className="py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <section className="py-12 md:py-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <div className="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 text-center hover:translate-y-[-5px] transition-transform duration-300">
                         <div className="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-4xl mb-6 mx-auto">
@@ -83,7 +83,7 @@ export default function BuyWreckPage() {
             </section>
 
             {/* Process Steps */}
-            <section className="py-20 bg-gray-50">
+            <section className="py-12 md:py-20 bg-gray-50">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <h2 className="text-3xl font-bold text-center mb-16">3 ขั้นตอนง่ายๆ ในการขายรถ</h2>
                     <div className="grid md:grid-cols-3 gap-12 relative">
@@ -116,7 +116,7 @@ export default function BuyWreckPage() {
             </section>
 
             {/* CTA Section */}
-            <section className="relative py-20 bg-gray-900 text-white text-center overflow-hidden">
+            <section className="relative py-12 md:py-20 bg-gray-900 text-white text-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
                     <div className="absolute inset-0 bg-[url('/images/cash-for-car.png')] bg-cover bg-center"></div>
                     <div className="absolute inset-0 bg-black/70"></div>

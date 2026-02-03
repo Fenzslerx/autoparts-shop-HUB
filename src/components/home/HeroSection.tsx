@@ -20,7 +20,7 @@ export default function HeroSection() {
                             ช.โชคชัยรถยก รถสไลด์ อะไหล่มือสอง
                         </div>
 
-                        <h1 className="text-4xl md:text-5xl lg:text-7xl font-bold mb-6 leading-tight tracking-tight">
+                        <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-6 leading-tight tracking-tight">
                             ช.โชคชัยรถยก
                             <span className="block text-blue-200">
                                 รถสไลด์

@@ -54,6 +54,7 @@ export async function executeD1Query(sql: string, params: any[] = []): Promise<a
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ sql: finalSql }),
+                cache: 'no-store' // Ensure we don't cache database queries
             }
         );
 
@@ -85,7 +86,8 @@ export async function getProductsFromD1(options: { includeInactive?: boolean } =
         sql += ' AND is_active = 1';
     }
 
-    sql += ' ORDER BY created_at DESC';
+    // Sort by updated_at DESC first (so recently edited/added items appear first)
+    sql += ' ORDER BY updated_at DESC, created_at DESC';
 
     const results = await executeD1Query(sql);
 

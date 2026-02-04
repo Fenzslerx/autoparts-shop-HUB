@@ -100,7 +100,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                         </div>
 
                         {/* Info Section */}
-                        <div className="p-8 lg:p-12 flex flex-col">
+                        <div className="p-5 md:p-8 lg:p-12 flex flex-col">
                             {/* Car Info */}
                             <div className="flex items-center gap-4 mb-4">
                                 <span className="px-4 py-2 bg-[var(--background)] rounded-full text-sm font-medium text-[var(--text-secondary)]">

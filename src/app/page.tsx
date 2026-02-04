@@ -8,8 +8,8 @@ import WhyChooseUsSection from '@/components/home/WhyChooseUsSection';
 import { getProducts } from '@/lib/db';
 
 // Disable all caching
-// Enable caching with revalidation (every 60 seconds)
-export const revalidate = 60;
+// Enable caching with revalidation (0 = no cache, dynamic)
+export const revalidate = 0;
 
 export default async function HomePage() {
   // Get featured products (first 4)

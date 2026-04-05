@@ -29,6 +29,29 @@ type LogRow = {
   created_at: string | null
 }
 
+function getErrorMessage(error: unknown) {
+  if (!error) return ''
+  if (typeof error === 'string') return error
+  if (typeof error === 'object' && 'message' in error && typeof error.message === 'string') {
+    return error.message
+  }
+  return String(error)
+}
+
+export function isSupabaseSchemaMissingError(error: unknown): boolean {
+  if (!error || typeof error !== 'object') return false
+
+  const code = 'code' in error ? String(error.code) : ''
+  const message = getErrorMessage(error)
+
+  return (
+    code === 'PGRST205' ||
+    message.includes("Could not find the table 'public.products'") ||
+    message.includes("Could not find the table 'public.logs'") ||
+    message.toLowerCase().includes('schema cache')
+  )
+}
+
 function mapProductRow(row: ProductRow): Product {
   const images = Array.isArray(row.images)
     ? row.images.filter(Boolean)
@@ -91,6 +114,29 @@ export async function getProductsFromSupabase(options: { includeInactive?: boole
   const { data, error } = await query
   if (error) throw error
   return (data || []).map((row) => mapProductRow(row as ProductRow))
+}
+
+export async function checkSupabaseSchemaStatus() {
+  const supabase = getSupabaseAdminClient()
+
+  const [productsCheck, logsCheck] = await Promise.all([
+    supabase.from('products').select('id', { head: true }).limit(1),
+    supabase.from('logs').select('id', { head: true }).limit(1),
+  ])
+
+  const productsReady = !productsCheck.error
+  const logsReady = !logsCheck.error
+  const ready = productsReady && logsReady
+
+  return {
+    ready,
+    productsReady,
+    logsReady,
+    errors: {
+      products: productsCheck.error ? getErrorMessage(productsCheck.error) : null,
+      logs: logsCheck.error ? getErrorMessage(logsCheck.error) : null,
+    },
+  }
 }
 
 export async function getProductByIdFromSupabase(id: string): Promise<Product | null> {

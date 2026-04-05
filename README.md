@@ -52,9 +52,10 @@ SUPABASE_STORAGE_BUCKET=product-images
 ```
 
 5. Start the app with `npm run dev`
-6. Check the connection at `/api/debug-supabase`
+6. Check the data source status at `/api/status/data`
 
 If Supabase is not configured, the app automatically falls back to local file storage.
+If Supabase is configured but the schema has not been created yet, the app will report a warning and may fall back to local data until you run `supabase-schema.sql` in the Supabase SQL Editor.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 

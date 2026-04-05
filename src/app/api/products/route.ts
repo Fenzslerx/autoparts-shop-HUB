@@ -1,5 +1,6 @@
 import { cookies } from 'next/headers'
 import { getProducts, addProduct } from '@/lib/db'
+import { getRuntimeDataSourceState } from '@/lib/data-source-status'
 import { logProductAction } from '@/lib/logger'
 import { checkRateLimit, getClientIP, rateLimitResponse } from '@/lib/rate-limiter'
 
@@ -19,11 +20,15 @@ export async function GET(request: Request) {
 
     const includeInactive = new URL(request.url).searchParams.get('includeInactive') === 'true'
     const products = await getProducts({ includeInactive })
+    const dataSourceState = getRuntimeDataSourceState()
+
     return new Response(JSON.stringify(products), {
         headers: {
             'Content-Type': 'application/json',
             'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
             'X-RateLimit-Remaining': rateLimit.remaining.toString(),
+            'X-Data-Source': dataSourceState.source,
+            ...(dataSourceState.warning ? { 'X-Data-Warning': dataSourceState.warning } : {}),
         },
     })
 }

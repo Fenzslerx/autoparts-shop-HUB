@@ -1,4 +1,5 @@
 import { Product } from './types'
+import { getRuntimeDataSourceState, setRuntimeDataSourceState } from './data-source-status'
 import {
     addProductToD1,
     deleteProductFromD1,
@@ -19,15 +20,46 @@ import {
     deleteProductFromSupabase,
     getProductByIdFromSupabase,
     getProductsFromSupabase,
+    isSupabaseSchemaMissingError,
     updateProductInSupabase,
 } from './supabase-db'
+
+let hasLoggedSupabaseSchemaWarning = false
+
+function setSupabaseSchemaWarning(error: unknown) {
+    const fallbackWarning =
+        'Supabase is configured but required tables are missing. Run supabase-schema.sql in the Supabase SQL Editor.'
+
+    setRuntimeDataSourceState({
+        source: 'local',
+        warning: fallbackWarning,
+    })
+
+    if (!hasLoggedSupabaseSchemaWarning) {
+        console.error(fallbackWarning, error)
+        hasLoggedSupabaseSchemaWarning = true
+    }
+}
+
+function clearRuntimeWarning(source: 'supabase' | 'd1' | 'local') {
+    setRuntimeDataSourceState({ source })
+    if (source === 'supabase') {
+        hasLoggedSupabaseSchemaWarning = false
+    }
+}
 
 export async function getProducts(options?: { includeInactive?: boolean }): Promise<Product[]> {
     if (isSupabaseConfigured()) {
         try {
-            return await getProductsFromSupabase(options)
+            const products = await getProductsFromSupabase(options)
+            clearRuntimeWarning('supabase')
+            return products
         } catch (error) {
-            console.error('Error fetching products from Supabase:', error)
+            if (isSupabaseSchemaMissingError(error)) {
+                setSupabaseSchemaWarning(error)
+            } else {
+                console.error('Error fetching products from Supabase:', error)
+            }
         }
     }
 
@@ -35,6 +67,7 @@ export async function getProducts(options?: { includeInactive?: boolean }): Prom
         try {
             const products = await getProductsFromD1(options)
             if (products.length > 0) {
+                clearRuntimeWarning('d1')
                 return products
             }
         } catch (error) {
@@ -43,6 +76,9 @@ export async function getProducts(options?: { includeInactive?: boolean }): Prom
     }
 
     const products = await readLocalProducts()
+    if (!getRuntimeDataSourceState().warning) {
+        clearRuntimeWarning('local')
+    }
     return options?.includeInactive ? products : products.filter((product) => product.isActive !== false)
 }
 
@@ -50,15 +86,21 @@ export async function getProductById(id: string): Promise<Product | null> {
     if (isSupabaseConfigured()) {
         try {
             const product = await getProductByIdFromSupabase(id)
+            clearRuntimeWarning('supabase')
             if (product) return product
         } catch (error) {
-            console.error('Error fetching product by ID from Supabase:', error)
+            if (isSupabaseSchemaMissingError(error)) {
+                setSupabaseSchemaWarning(error)
+            } else {
+                console.error('Error fetching product by ID from Supabase:', error)
+            }
         }
     }
 
     if (isD1Configured()) {
         try {
             const product = await getProductByIdFromD1(id)
+            clearRuntimeWarning('d1')
             if (product) return product
         } catch (error) {
             console.error('Error fetching product by ID from D1:', error)
@@ -72,15 +114,23 @@ export async function getProductById(id: string): Promise<Product | null> {
 export async function addProduct(product: Omit<Product, 'id' | 'createdAt' | 'updatedAt'>): Promise<Product> {
     if (isSupabaseConfigured()) {
         try {
-            return await addProductToSupabase(product)
+            const createdProduct = await addProductToSupabase(product)
+            clearRuntimeWarning('supabase')
+            return createdProduct
         } catch (error) {
-            console.error('Error adding product to Supabase:', error)
+            if (isSupabaseSchemaMissingError(error)) {
+                setSupabaseSchemaWarning(error)
+            } else {
+                console.error('Error adding product to Supabase:', error)
+            }
         }
     }
 
     if (isD1Configured()) {
         try {
-            return await addProductToD1(product)
+            const createdProduct = await addProductToD1(product)
+            clearRuntimeWarning('d1')
+            return createdProduct
         } catch (error) {
             console.error('Error adding product to D1:', error)
         }
@@ -92,9 +142,15 @@ export async function addProduct(product: Omit<Product, 'id' | 'createdAt' | 'up
 export async function updateProduct(id: string, updates: Partial<Product>): Promise<Product | null> {
     if (isSupabaseConfigured()) {
         try {
-            return await updateProductInSupabase(id, updates)
+            const product = await updateProductInSupabase(id, updates)
+            clearRuntimeWarning('supabase')
+            return product
         } catch (error) {
-            console.error('Error updating product in Supabase:', error)
+            if (isSupabaseSchemaMissingError(error)) {
+                setSupabaseSchemaWarning(error)
+            } else {
+                console.error('Error updating product in Supabase:', error)
+            }
         }
     }
 
@@ -102,6 +158,7 @@ export async function updateProduct(id: string, updates: Partial<Product>): Prom
         try {
             const success = await updateProductInD1(id, updates)
             if (success) {
+                clearRuntimeWarning('d1')
                 return await getProductById(id)
             }
         } catch (error) {
@@ -115,15 +172,23 @@ export async function updateProduct(id: string, updates: Partial<Product>): Prom
 export async function deleteProduct(id: string): Promise<boolean> {
     if (isSupabaseConfigured()) {
         try {
-            return await deleteProductFromSupabase(id)
+            const deleted = await deleteProductFromSupabase(id)
+            clearRuntimeWarning('supabase')
+            return deleted
         } catch (error) {
-            console.error('Error deleting product from Supabase:', error)
+            if (isSupabaseSchemaMissingError(error)) {
+                setSupabaseSchemaWarning(error)
+            } else {
+                console.error('Error deleting product from Supabase:', error)
+            }
         }
     }
 
     if (isD1Configured()) {
         try {
-            return await deleteProductFromD1(id)
+            const deleted = await deleteProductFromD1(id)
+            clearRuntimeWarning('d1')
+            return deleted
         } catch (error) {
             console.error('Error deleting product from D1:', error)
         }

@@ -3,14 +3,14 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "C:\\PROGRA~1\\nodejs\\node.exe ./scripts/run-next.cjs dev",
-    "dev:clean": "C:\\PROGRA~1\\nodejs\\node.exe ./scripts/run-next.cjs dev --clean",
-    "build": "C:\\PROGRA~1\\nodejs\\node.exe ./scripts/run-next.cjs build",
-    "start": "C:\\PROGRA~1\\nodejs\\node.exe ./scripts/run-next.cjs start",
-    "lint": "C:\\PROGRA~1\\nodejs\\node.exe ./node_modules/next/dist/bin/next lint"
+    "dev": "node ./scripts/run-next.cjs dev",
+    "dev:clean": "node ./scripts/run-next.cjs dev --clean",
+    "build": "node ./scripts/run-next.cjs build",
+    "start": "node ./scripts/run-next.cjs start",
+    "lint": "next lint"
   },
   "engines": {
-    "node": ">=18.17.0"
+    "node": "22.x"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.56.0",

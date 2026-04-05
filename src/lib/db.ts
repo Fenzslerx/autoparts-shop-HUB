@@ -66,10 +66,8 @@ export async function getProducts(options?: { includeInactive?: boolean }): Prom
     if (isD1Configured()) {
         try {
             const products = await getProductsFromD1(options)
-            if (products.length > 0) {
-                clearRuntimeWarning('d1')
-                return products
-            }
+            clearRuntimeWarning('d1')
+            return products
         } catch (error) {
             console.error('Error fetching products from D1:', error)
         }
@@ -101,7 +99,7 @@ export async function getProductById(id: string): Promise<Product | null> {
         try {
             const product = await getProductByIdFromD1(id)
             clearRuntimeWarning('d1')
-            if (product) return product
+            return product
         } catch (error) {
             console.error('Error fetching product by ID from D1:', error)
         }

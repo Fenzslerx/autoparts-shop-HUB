@@ -1,0 +1,23 @@
+{
+  "products": [
+    {
+      "id": "prod-1769716459879",
+      "name": "sadsa",
+      "description": "sadsad",
+      "price": 222333,
+      "carBrand": "Toyota",
+      "carModel": "Camry",
+      "carYear": "2222",
+      "category": "engine",
+      "imageUrl": "https://pub-7317646fe751438aab922bda666d9eaf.r2.dev/products/1769716442972.png",
+      "images": [
+        "https://pub-7317646fe751438aab922bda666d9eaf.r2.dev/products/1769716442972.png",
+        "https://pub-7317646fe751438aab922bda666d9eaf.r2.dev/products/1769716444979.png"
+      ],
+      "stock": 2,
+      "isActive": true,
+      "createdAt": "2026-01-29",
+      "updatedAt": "2026-01-29"
+    }
+  ]
+}

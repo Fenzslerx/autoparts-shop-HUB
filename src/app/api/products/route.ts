@@ -1,0 +1,76 @@
+import { cookies } from 'next/headers'
+import { getProducts, addProduct } from '@/lib/db'
+import { logProductAction } from '@/lib/logger'
+import { checkRateLimit, getClientIP, rateLimitResponse } from '@/lib/rate-limiter'
+
+// Disable all caching
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
+// GET all products - Rate limit: 60 requests per minute
+export async function GET(request: Request) {
+    // Rate limiting
+    const ip = getClientIP(request)
+    const rateLimit = checkRateLimit(`products-get-${ip}`, { windowMs: 60000, maxRequests: 60 })
+
+    if (!rateLimit.success) {
+        return rateLimitResponse(rateLimit.resetTime)
+    }
+
+    const includeInactive = new URL(request.url).searchParams.get('includeInactive') === 'true'
+    const products = await getProducts({ includeInactive })
+    return new Response(JSON.stringify(products), {
+        headers: {
+            'Content-Type': 'application/json',
+            'Cache-Control': 'no-store, no-cache, must-revalidate, max-age=0',
+            'X-RateLimit-Remaining': rateLimit.remaining.toString(),
+        },
+    })
+}
+
+// POST create product - Rate limit: 10 requests per minute
+export async function POST(request: Request) {
+    // Rate limiting (stricter for mutations)
+    const ip = getClientIP(request)
+    const rateLimit = checkRateLimit(`products-post-${ip}`, { windowMs: 60000, maxRequests: 10 })
+
+    if (!rateLimit.success) {
+        return rateLimitResponse(rateLimit.resetTime)
+    }
+
+    const cookieStore = await cookies()
+    const authCookie = cookieStore.get('admin_auth')
+
+    if (!authCookie || authCookie.value !== 'true') {
+        return Response.json({ success: false, error: 'Unauthorized' }, { status: 401 })
+    }
+
+    try {
+        const body = await request.json() as any
+
+        // Basic input validation
+        if (!body.name || typeof body.name !== 'string' || body.name.length > 200) {
+            return Response.json({ success: false, error: 'Invalid product name' }, { status: 400 })
+        }
+        if (typeof body.price !== 'number' || body.price < 0) {
+            return Response.json({ success: false, error: 'Invalid price' }, { status: 400 })
+        }
+
+        const newProduct = await addProduct({
+            ...body,
+            isActive: body.isActive !== false,
+        })
+
+        // Log creation (don't fail if logging fails)
+        try {
+            await logProductAction('create', { id: newProduct.id, name: newProduct.name })
+        } catch (logError) {
+            console.error('Failed to log product action:', logError)
+        }
+
+        return Response.json({ success: true, product: newProduct })
+    } catch (error) {
+        console.error('Failed to create product:', error)
+        return Response.json({ success: false, error: 'Failed to create product' }, { status: 500 })
+    }
+}

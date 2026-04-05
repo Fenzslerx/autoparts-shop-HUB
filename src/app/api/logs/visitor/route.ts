@@ -1,0 +1,23 @@
+import { NextRequest, NextResponse } from 'next/server'
+import { logVisitor } from '@/lib/logger'
+
+export const dynamic = 'force-dynamic'
+
+export async function POST(request: NextRequest) {
+    try {
+        const { page, productId } = await request.json() as any
+
+        await logVisitor(
+            page,
+            productId,
+            {
+                ip: request.headers.get('x-forwarded-for') || undefined,
+                userAgent: request.headers.get('user-agent') || undefined
+            }
+        )
+
+        return NextResponse.json({ success: true })
+    } catch (error) {
+        return NextResponse.json({ error: 'Failed to log' }, { status: 500 })
+    }
+}
